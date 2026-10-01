@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="GeekForce Hub: internal career-support workspace for the 4Geeks Academy GeekForce USA team.">
+<link rel="icon" href="img/4geeks-icon.png">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+<title>GeekForce Career Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&display=swap">
+<style>
+/* Layout: white 4Geeks-style app bar, one centered work column, soft blue panels; screens switch by #hash. Brand from 4geeks.com: blue #0080FF, navy #00071A, yellow only for wins. */
+:root{
+  --bg:#FFFFFF; --panel:#F4F8FF; --surface:#FFFFFF; --surface-2:#F5F7FB; --fg:#00071A; --muted:#475066; --faint:#5F687C; --border:#E4E8F0; --border-strong:#D1D8E4;
+  --accent:#0080FF; --accent-ink:#0062C4; --accent-soft:rgba(0,128,255,.09); --accent-soft-2:rgba(0,128,255,.16); --btn:#0072E5; --btn-fg:#FFFFFF;
+  --navy:#00071A; --navy-fg:#FFFFFF; --yellow:#FFBE1A; --yellow-soft:rgba(255,190,26,.20); --yellow-ink:#6B4A00;
+  --danger:#B42318; --danger-soft:rgba(201,29,29,.07); --ok:#0B7A4B; --ok-soft:rgba(11,122,75,.09);
+  --p-ai:#0080FF; --p-fs:#6D5BD0; --p-ds:#0E9384; --p-cy:#D9483B;
+  --logo-filter:none; --shadow:0 1px 2px rgba(0,7,26,.04),0 8px 24px rgba(0,7,26,.06); --shadow-lg:0 24px 60px rgba(0,7,26,.18);
+  --font-display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --font-body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#060A14; --panel:#0C1424; --surface:#0E1628; --surface-2:#141D32; --fg:#EEF2F8; --muted:#B2BACB; --faint:#98A1B4; --border:#222C44; --border-strong:#2E3A57;
+  --accent:#3D9BFF; --accent-ink:#8CC3FF; --accent-soft:rgba(61,155,255,.13); --accent-soft-2:rgba(61,155,255,.22); --btn:#1A6FD6; --btn-fg:#FFFFFF;
+  --navy:#E9EEF7; --navy-fg:#00071A; --yellow:#FFBE1A; --yellow-soft:rgba(255,190,26,.15); --yellow-ink:#FFD36B;
+  --danger:#FF8A80; --danger-soft:rgba(255,100,90,.12); --ok:#5DD39E; --ok-soft:rgba(93,211,158,.13);
+  --p-ai:#4DA3FF; --p-fs:#9D8CF0; --p-ds:#3CC7B5; --p-cy:#FF7A6E;
+  --logo-filter:invert(1); --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3); --shadow-lg:0 24px 60px rgba(0,0,0,.55); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#060A14; --panel:#0C1424; --surface:#0E1628; --surface-2:#141D32; --fg:#EEF2F8; --muted:#B2BACB; --faint:#98A1B4; --border:#222C44; --border-strong:#2E3A57;
+  --accent:#3D9BFF; --accent-ink:#8CC3FF; --accent-soft:rgba(61,155,255,.13); --accent-soft-2:rgba(61,155,255,.22); --btn:#1A6FD6; --btn-fg:#FFFFFF;
+  --navy:#E9EEF7; --navy-fg:#00071A; --yellow:#FFBE1A; --yellow-soft:rgba(255,190,26,.15); --yellow-ink:#FFD36B;
+  --danger:#FF8A80; --danger-soft:rgba(255,100,90,.12); --ok:#5DD39E; --ok-soft:rgba(93,211,158,.13);
+  --p-ai:#4DA3FF; --p-fs:#9D8CF0; --p-ds:#3CC7B5; --p-cy:#FF7A6E;
+  --logo-filter:invert(1); --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3); --shadow-lg:0 24px 60px rgba(0,0,0,.55); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(30px,4.2vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
+h2{font-size:20px;font-weight:700}
+h3{font-size:16px;font-weight:700}
+em.hl{font-style:italic;color:var(--accent);font-weight:800}
+a{color:var(--accent-ink)}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* app bar */
+.topbar{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border);position:sticky;top:env(safe-area-inset-top,0px);z-index:30}
+.topbar .in{max-width:1320px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:18px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0;color:var(--fg);text-decoration:none}
+.brand img{width:34px;height:34px;filter:var(--logo-filter)}
+.brand b{font-family:var(--font-display);font-weight:800;font-size:19px;letter-spacing:-.02em}
+.brand small{display:block;font-size:11px;font-weight:600;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;margin-top:-3px}
+nav.main{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:9px 12px;border-radius:8px;white-space:nowrap;transition:background .15s,color .15s}
+nav.main a:hover{color:var(--fg);background:var(--surface-2)}
+nav.main a[aria-current="page"]{color:var(--accent-ink);background:var(--accent-soft)}
+.tools{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.mockpill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);border:1px dashed var(--border-strong);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.mockpill i{width:6px;height:6px;border-radius:999px;background:var(--yellow)}
+@media (max-width:760px){.mockpill span{display:none}}
+.kbd{font-size:11px;border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:5px;padding:0 5px;color:var(--faint);font-family:var(--font-body)}
+
+.wrap{max-width:1320px;margin:0 auto;padding:28px 16px 80px;display:flex;flex-direction:column;gap:24px;animation:rise .35s ease-out}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+
+/* building blocks */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;min-width:0;box-shadow:var(--shadow)}
+.panel{background:var(--panel);border-radius:22px;padding:24px;min-width:0}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.between{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.stack{display:flex;flex-direction:column;gap:12px}
+.muted{color:var(--muted)} .faint{color:var(--faint);font-size:13px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:999px;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:8px;border:1px solid transparent;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .12s,box-shadow .15s,background .15s,border-color .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--btn);color:var(--btn-fg);box-shadow:0 6px 16px rgba(0,114,229,.25)}
+.btn.primary:hover{background:color-mix(in srgb,var(--btn) 88%,#000)}
+.btn.ghost{background:var(--surface);border-color:var(--border-strong);color:var(--fg)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn.dark{background:var(--navy);color:var(--navy-fg)}
+.btn.sm{min-height:36px;padding:0 12px;font-size:13px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.iconbtn{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--fg);transition:border-color .15s}
+.iconbtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.iconbtn.sm{width:34px;height:34px;border-radius:8px}
+.iconbtn[disabled]{opacity:.3;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;background:var(--surface-2);color:var(--muted)}
+.chip.blue{background:var(--accent-soft);color:var(--accent-ink)}
+.chip.solid{background:var(--accent);color:#FFFFFF}
+.chip.navy{background:var(--navy);color:var(--navy-fg)}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}
+.chip.red{background:var(--danger-soft);color:var(--danger)}
+.chip.win{background:var(--yellow);color:#00071A}
+.chip.line{background:transparent;border:1px solid var(--border-strong);color:var(--muted)}
+.dotc{width:8px;height:8px;border-radius:999px;display:inline-block;flex-shrink:0}
+.tag{display:inline-block;padding:3px 9px;border-radius:7px;background:var(--surface-2);color:var(--muted);font-size:12px;font-weight:500}
+.tag.hit{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:var(--muted)}
+.field input,.field select,.field textarea{min-height:44px;border:1px solid var(--border-strong);border-radius:10px;padding:0 12px;background:var(--surface);color:var(--fg);font-size:14px;font-weight:400;transition:border-color .15s,box-shadow .15s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.field textarea{padding:10px 12px;min-height:90px;resize:vertical}
+.check{display:flex;gap:8px;align-items:center;font-size:14px;min-height:32px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--btn)}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface);color:var(--fg);font-weight:600;font-size:14px;cursor:pointer;transition:all .15s}
+.pill:hover{border-color:var(--accent)}
+.pill[aria-pressed="true"]{background:var(--navy);color:var(--navy-fg);border-color:var(--navy)}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:12px;padding:4px;gap:2px}
+.seg button{border:none;background:transparent;padding:8px 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;color:var(--muted);min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:var(--shadow)}
+.avatar{width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-family:var(--font-display);font-size:14px;color:#FFFFFF}
+.avatar.lg{width:72px;height:72px;font-size:24px}
+.avatar.xs{width:30px;height:30px;font-size:11px;border:2px solid var(--surface)}
+.avstack{display:flex}.avstack .avatar{margin-left:-8px}.avstack .avatar:first-child{margin-left:0}
+.switch{width:50px;height:30px;border-radius:999px;border:none;padding:3px;cursor:pointer;display:flex;background:var(--border-strong);flex-shrink:0;transition:background .2s}
+.switch i{width:24px;height:24px;border-radius:999px;background:#FFFFFF;display:block;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.switch[aria-checked="true"]{background:var(--btn)}
+.switch[aria-checked="true"] i{transform:translateX(20px)}
+.bar{height:8px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:999px;background:var(--accent);transition:width .5s}
+.bar.r>i{background:var(--danger)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14px;margin:0}
+.kv dt{color:var(--faint)} .kv dd{margin:0;text-align:right}
+
+/* home */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:stretch}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.mockline{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);background:var(--surface-2);border-radius:12px;padding:10px 14px;max-width:760px}
+.mockline b{color:var(--fg)}
+.sweep{background:var(--navy);color:var(--navy-fg);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.sweep .big{font-family:var(--font-display);font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.sweep .sub{opacity:.75;font-size:14px}
+.sweep .glow{position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:999px;background:radial-gradient(circle,rgba(0,128,255,.55),transparent 70%);pointer-events:none}
+.sweep .chip{background:rgba(255,255,255,.12);color:inherit}
+:root[data-theme="dark"] .sweep .chip{background:rgba(0,7,26,.08)}
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee .track{display:flex;gap:10px;width:max-content;animation:slide 220s linear infinite}
+.marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.mq{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer;color:var(--fg);transition:border-color .15s,background .15s}
+.mq:hover{border-color:var(--accent);background:var(--accent-soft)}
+.tinfo h4{margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.tinfo ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.mq i{width:7px;height:7px;border-radius:999px;background:var(--accent)}
+
+.weekly{background:linear-gradient(180deg,var(--panel),var(--surface));border:1px solid var(--border);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:18px}
+.wtabs{display:flex;gap:6px;flex-wrap:wrap}
+.wtabs button{border:1px solid var(--border-strong);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px;cursor:pointer;min-height:38px}
+.wtabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#FFFFFF}
+.witems{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}
+.witem{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.witem:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.witem .stat{font-family:var(--font-display);font-size:34px;font-weight:800;letter-spacing:-.03em;color:var(--accent);line-height:1}
+.witem .so{font-size:12px;color:var(--faint);margin-top:auto}
+.witem .so a{color:var(--faint)}
+.witem .do{font-size:13px;background:var(--accent-soft);color:var(--accent-ink);border-radius:10px;padding:8px 10px}
+.titlecloud{display:flex;flex-wrap:wrap;gap:8px}
+.titlecloud button{border:1px solid var(--border-strong);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.titlecloud button:hover{border-color:var(--accent);color:var(--accent-ink)}
+.titlecloud button.new::after{content:"NEW";font-size:9px;font-weight:800;letter-spacing:.08em;margin-left:6px;color:var(--accent-ink)}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:4px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .15s}
+a.kpi:hover,button.kpi:hover{transform:translateY(-2px)}
+button.kpi{font:inherit;text-align:left;cursor:pointer}
+.kpi .l{font-size:13px;color:var(--muted);font-weight:500}
+.kpi .v{font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .s{font-size:12px;color:var(--faint)}
+.kpi svg{margin-top:6px}
+.kpi.alert .v{color:var(--danger)}
+.donutwrap{display:grid;grid-template-columns:190px 1fr;gap:20px;align-items:center}
+@media (max-width:520px){.donutwrap{grid-template-columns:1fr;justify-items:center}}
+.donut circle.seg{cursor:pointer;transition:stroke-width .15s,opacity .15s}
+.donut circle.seg:hover,.donut circle.seg.on{stroke-width:30}
+.legendlist{display:flex;flex-direction:column;gap:6px;width:100%}
+.legendlist button{display:flex;align-items:center;gap:10px;border:none;background:transparent;padding:6px 8px;border-radius:8px;cursor:pointer;text-align:left;font-size:14px;width:100%}
+.legendlist button:hover,.legendlist button.on{background:var(--surface-2)}
+.legendlist b{margin-left:auto;font-variant-numeric:tabular-nums}
+.funnel{display:flex;flex-direction:column;gap:8px}
+.frow{display:grid;grid-template-columns:minmax(120px,160px) 1fr 70px;gap:12px;align-items:center;font-size:14px}
+.fbar{height:30px;border-radius:8px;background:var(--surface-2);overflow:hidden}
+.fbar i{display:flex;align-items:center;justify-content:flex-end;padding-right:10px;height:100%;border-radius:8px;color:#FFFFFF;font-size:12px;font-weight:700;background:var(--accent)}
+.drop{font-size:12px;color:var(--faint);text-align:right}
+.chartbox{position:relative}
+.tip{position:absolute;pointer-events:none;background:var(--navy);color:var(--navy-fg);font-size:12px;padding:6px 10px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-120%);opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}
+.quota{display:grid;grid-template-columns:minmax(110px,150px) 1fr 52px;gap:10px 12px;align-items:center;font-size:14px}
+.qtrack{position:relative;height:14px;background:var(--surface-2);border-radius:999px}
+.qtrack i{position:absolute;left:0;top:0;bottom:0;border-radius:999px}
+.qtrack b{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--fg);border-radius:2px}
+.flow{display:flex;height:26px;border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.flow i{display:block;height:100%}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+.todo{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--surface-2);transition:opacity .2s}
+.todo .t{flex:1;min-width:0;font-size:14px}
+.todo .bul{width:10px;height:10px;border-radius:999px;flex-shrink:0}
+.todo.done{opacity:.55}.todo.done .t{text-decoration:line-through}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:900px}
+th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700;padding:14px 16px;background:var(--surface-2)}
+td{padding:12px 16px;border-top:1px solid var(--border);vertical-align:middle}
+tbody tr{transition:background .12s}
+tbody tr:hover td{background:var(--panel)}
+.namecell{display:flex;align-items:center;gap:12px}
+.namebtn{background:none;border:none;padding:0;font-weight:600;cursor:pointer;text-align:left;color:var(--fg);font-size:14px}
+.namebtn:hover{color:var(--accent-ink);text-decoration:underline}
+.mini{display:flex;align-items:center;gap:8px;min-width:140px}
+.mini .bar{flex:1}
+
+/* jobs */
+.job{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:start;transition:transform .15s,box-shadow .15s}
+.job:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,7,26,.1)}
+@media (max-width:760px){.job{grid-template-columns:1fr}}
+.logo{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:17px;color:#FFFFFF;flex-shrink:0}
+.ring{position:relative;width:64px;height:64px;flex-shrink:0}
+.ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:15px}
+.why{font-size:13px;color:var(--danger)}
+.matchlist{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.mrow{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:8px 10px;background:var(--surface-2);border-radius:12px;flex-wrap:wrap}
+
+/* graduate */
+.kanban{display:grid;grid-template-columns:repeat(4,minmax(210px,1fr));gap:12px;overflow-x:auto;padding-bottom:6px}
+.col{background:var(--surface-2);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:200px;transition:background .15s,outline-color .15s;outline:2px dashed transparent;outline-offset:-2px}
+.col.over{background:var(--accent-soft);outline-color:var(--accent)}
+.col h4{margin:0;font-size:13px;display:flex;justify-content:space-between;align-items:center}
+.kcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;cursor:grab;box-shadow:0 1px 2px rgba(0,7,26,.05)}
+.kcard:active{cursor:grabbing}
+.kcard.dragging{opacity:.4}
+.kcard .acts{display:flex;gap:6px}
+.log{display:grid;grid-template-columns:20px 1fr;gap:12px;padding:10px 0;font-size:14px;position:relative}
+.log::before{content:"";position:absolute;left:5px;top:28px;bottom:-8px;width:2px;background:var(--border)}
+.log:last-child::before{display:none}
+.log .b{width:12px;height:12px;border-radius:999px;background:var(--accent);margin-top:4px;box-shadow:0 0 0 4px var(--accent-soft)}
+
+/* sources */
+.src{display:flex;flex-direction:column;gap:12px}
+.meter{display:inline-flex;gap:3px;align-items:center}
+.meter i{width:16px;height:6px;border-radius:999px;background:var(--border-strong)}
+.meter i.on{background:var(--accent)}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;font-size:14px}
+.steps li::before{content:counter(s);width:26px;height:26px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+
+/* modal, toast, palette */
+.modal-bg{position:fixed;inset:0;background:rgba(0,7,26,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50;animation:fade .15s}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+.modal{background:var(--surface);color:var(--fg);border-radius:22px;max-width:660px;width:100%;max-height:calc(100% - 32px);overflow:auto;padding:26px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-lg);animation:pop .18s ease-out}
+@keyframes pop{from{transform:scale(.97) translateY(6px)}to{transform:none}}
+.modal pre{white-space:pre-wrap;font-family:var(--font-body);font-size:14px;background:var(--surface-2);border-radius:14px;padding:16px;margin:0;line-height:1.55}
+.palette{max-width:600px;padding:0;gap:0;align-self:flex-start;margin-top:10vh}
+.palette input{border:none;border-bottom:1px solid var(--border);padding:18px 20px;font-size:17px;background:transparent;color:var(--fg);outline:none;width:100%}
+.palette ul{list-style:none;margin:0;padding:8px;max-height:50vh;overflow:auto}
+.palette li button{display:flex;width:100%;align-items:center;gap:12px;border:none;background:transparent;padding:10px 12px;border-radius:10px;cursor:pointer;text-align:left;font-size:14px}
+.palette li button:hover,.palette li button.on{background:var(--accent-soft)}
+.palette li small{margin-left:auto;color:var(--faint)}
+.toasts{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;z-index:60;max-width:min(420px,calc(100% - 32px))}
+.toast{background:var(--navy);color:var(--navy-fg);padding:12px 16px;border-radius:14px;font-size:14px;box-shadow:var(--shadow-lg);animation:pop .2s ease-out;display:flex;gap:10px;align-items:flex-start}
+.toast small{display:block;opacity:.72;font-size:12px}
+.toast .ic{width:20px;height:20px;border-radius:999px;background:var(--accent);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
+.footer{max-width:1320px;margin:0 auto;padding:0 16px 40px;color:var(--faint);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="#home"><img src="img/4geeks-icon.png" alt=""><span><b>4Geeks</b><small>GeekForce Hub</small></span></a>
+    <nav class="main" aria-label="Main">
+      <a href="#home">Overview</a>
+      <a href="#graduates">Graduates</a>
+      <a href="#radar">Job Radar</a>
+      <a href="#sources">Job Sources</a>
+      <a href="#pipeline">Talent Pipeline</a>
+      <a href="#automations">Automations</a>
+      <a href="#integrations">Integrations</a>
+    </nav>
+    <div class="tools">
+      <span class="mockpill" title="Sample data. Nothing is connected or sent."><i></i><span>Mockup</span></span>
+      <button class="iconbtn" data-act="palette" aria-label="Search graduates and jobs (Ctrl+K)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+      <button class="iconbtn" data-act="theme" aria-label="Switch light or dark theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="app" class="wrap"></main>
+<footer class="footer"><span>GeekForce Career Hub &#xB7; prototype for the 4Geeks Academy USA campus</span><span>Sample data except GeekForce Weekly, which links to real sources</span></footer>
+<div id="modal-root"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<canvas id="confetti" width="0" height="0"></canvas>
+
+<script>
+(function(){
+/* ================= data ================= */
+const PROGRAMS=['AI Engineering','Full Stack','Data Science & ML','Cybersecurity'];
+const PVAR={'AI Engineering':'--p-ai','Full Stack':'--p-fs','Data Science & ML':'--p-ds','Cybersecurity':'--p-cy'};
+const pc=p=>`var(${PVAR[p]})`;
+const STAGES={
+  not_started:{label:'Not Started',cls:'red',color:'var(--danger)'},
+  s1:{label:'Stage 1 \u00B7 Profile',cls:'blue',color:'#99CCFF'},
+  s2:{label:'Stage 2 \u00B7 Interview prep',cls:'blue',color:'#4DA6FF'},
+  s3:{label:'Stage 3 \u00B7 Job hunting',cls:'solid',color:'var(--accent)'},
+  interviewing:{label:'Interviewing',cls:'navy',color:'#003E7A'},
+  placed:{label:'Placed',cls:'win',color:'var(--yellow)'}
+};
+const STAGE_ORDER=['not_started','s1','s2','s3','interviewing','placed'];
+const PLANS={JG:{label:'Job Guarantee',apps:15,contacts:50},PS:{label:'Professional Support',apps:10,contacts:20}};
+
+const G=[
+ {id:'jd',name:'Jordan Diaz',program:'AI Engineering',cohort:'ft-ai-1',stage:'s3',plan:'JG',loc:'Miami, FL',modes:['Remote','Hybrid'],skills:['Python','LangGraph','RAG','FastAPI','React','Customer success'],edge:'6 years in customer success; strong with clients',targets:'AI Engineer, AI Solutions Engineer, Forward Deployed Engineer',last:4,apps:12,contacts:31,motto:'Builds AI that customers actually use'},
+ {id:'ak',name:'Amira Khan',program:'AI Engineering',cohort:'ft-ai-1',stage:'interviewing',plan:'JG',loc:'Arlington, VA',modes:['Remote','On-site'],skills:['Python','LLM evals','RAG','SQL','OSINT'],edge:'OSINT research, 4 languages, security studies',targets:'AI Evaluation Analyst, Applied AI Engineer, Trust & Safety',last:2,apps:16,contacts:44,motto:'Tests models before they reach people'},
+ {id:'mb',name:'Marcus Bell',program:'AI Engineering',cohort:'ft-ai-1',stage:'s3',plan:'PS',loc:'Austin, TX',modes:['Remote'],skills:['Python','OpenAI API','Docker','n8n'],edge:'Operations background; automates workflows',targets:'AI Automation Engineer, AI Implementation Specialist',last:17,apps:3,contacts:8,motto:'Automates the boring parts of work'},
+ {id:'vp',name:'Valeria P\u00E9rez',program:'AI Engineering',cohort:'ft-ai-1',stage:'s2',plan:'JG',loc:'Miami, FL',modes:['Hybrid','Remote'],skills:['Python','RAG','LangChain','FastAPI'],edge:'Former teacher; explains technical topics clearly',targets:'Applied AI Engineer, AI Trainer',last:5,apps:0,contacts:6,motto:'Turns complex AI into clear products'},
+ {id:'tj',name:'Tyler James',program:'AI Engineering',cohort:'ft-ai-1',stage:'not_started',plan:'JG',loc:'Atlanta, GA',modes:['Remote'],skills:['Python','React'],edge:'\u2014',targets:'\u2014',last:9,apps:0,contacts:0,motto:''},
+ {id:'lt',name:'Luc\u00EDa Torres',program:'Full Stack',cohort:'pt-fs-34',stage:'s3',plan:'JG',loc:'Orlando, FL',modes:['Remote','Hybrid'],skills:['React','Node.js','PostgreSQL','TypeScript'],edge:'Logistics analyst who builds internal tools',targets:'Frontend Developer, Software Engineer I',last:9,apps:15,contacts:52,motto:'Ships clean React apps fast'},
+ {id:'dw',name:'Devon Walker',program:'Full Stack',cohort:'pt-fs-34',stage:'s2',plan:'JG',loc:'Miami, FL',modes:['Hybrid','On-site'],skills:['JavaScript','React','Flask','SQL'],edge:'Retail manager; leads teams',targets:'Full Stack Developer, Technical Support Engineer',last:6,apps:0,contacts:12,motto:'A leader who codes'},
+ {id:'kh',name:'Kim Huang',program:'Full Stack',cohort:'pt-fs-34',stage:'not_started',plan:'PS',loc:'San Diego, CA',modes:['Remote'],skills:['JavaScript','React'],edge:'\u2014',targets:'\u2014',last:16,apps:0,contacts:0,motto:''},
+ {id:'ns',name:'Nina Soto',program:'Full Stack',cohort:'pt-fs-33',stage:'placed',plan:'JG',loc:'Tampa, FL',modes:['Hybrid'],skills:['React','Node.js','SQL'],edge:'Placed as Junior Developer',targets:'\u2014',last:20,apps:0,contacts:0,motto:''},
+ {id:'rp',name:'Ravi Patel',program:'Data Science & ML',cohort:'ds-12',stage:'s3',plan:'PS',loc:'Houston, TX',modes:['Remote'],skills:['Python','SQL','Pandas','Tableau'],edge:'Finance analyst; strong with numbers',targets:'Data Analyst, BI Analyst',last:11,apps:7,contacts:14,motto:'Finds the story in the data'},
+ {id:'ec',name:'Emily Chen',program:'Data Science & ML',cohort:'ds-12',stage:'interviewing',plan:'JG',loc:'Miami, FL',modes:['Hybrid'],skills:['Python','SQL','scikit-learn','Power BI'],edge:'Lab researcher; rigorous with experiments',targets:'Junior Data Scientist, Data Analyst',last:3,apps:18,contacts:47,motto:'Experiments first, opinions later'},
+ {id:'al',name:'Andre Lewis',program:'Data Science & ML',cohort:'ds-12',stage:'placed',plan:'PS',loc:'Miami, FL',modes:['Remote'],skills:['SQL','Python'],edge:'Placed as Data Analyst',targets:'\u2014',last:25,apps:0,contacts:0,motto:''},
+ {id:'ob',name:'Omar Brooks',program:'Cybersecurity',cohort:'cyber-5',stage:'s3',plan:'JG',loc:'Fort Lauderdale, FL',modes:['On-site','Hybrid'],skills:['SIEM','Linux','Networking','Splunk'],edge:'IT help desk for 4 years',targets:'SOC Analyst I, IT Security Analyst',last:15,apps:9,contacts:22,motto:'Calm under incident pressure'},
+ {id:'sg',name:'Sara G\u00F3mez',program:'Cybersecurity',cohort:'cyber-5',stage:'s1',plan:'PS',loc:'Miami, FL',modes:['Remote'],skills:['Linux','Networking','Python'],edge:'Bilingual customer support',targets:'Security Analyst, IT Support Specialist',last:8,apps:0,contacts:3,motto:''}
+];
+
+const SOURCES=[
+ {id:'linkedin',name:'LinkedIn',mono:'in',color:'#0A66C2',easy:'Easy Apply',good:'Biggest US volume. The team\u2019s main source.',method:'Your Chrome session + job alert emails',feas:2,note:'LinkedIn has no public job-search API and does not allow scraping. Safest path: saved searches with alerts, read by the Hub, or an assisted search in your own logged-in Chrome.',url:'https://www.linkedin.com/jobs/'},
+ {id:'vertrix',name:'Vertrix',mono:'Vx',color:'#5B4BD6',easy:'To confirm',good:'US job platform mentioned by the team. Name to confirm.',method:'To confirm',feas:0,note:'We could not find a US job platform with this exact name. Share the link and we will check whether it has an API.',url:''},
+ {id:'indeed',name:'Indeed',mono:'In',color:'#2557A7',easy:'Easily apply',good:'Huge entry-level volume. Watch for ghost jobs.',method:'Aggregator API (e.g. JSearch)',feas:2,note:'Indeed closed its public API. Its listings can be reached through Google for Jobs aggregators.',url:'https://www.indeed.com/'},
+ {id:'google',name:'Google Jobs',mono:'G',color:'#1A73E8',easy:'Mixed',good:'Collects LinkedIn, Indeed, ZipRecruiter, Glassdoor and company sites in one search.',method:'Aggregator API (SerpApi or JSearch)',feas:3,note:'One connection covers many boards. Paid plans with a free tier.',url:'https://www.google.com/search?q=jobs'},
+ {id:'adzuna',name:'Adzuna (Lali)',mono:'Az',color:'#00897B',easy:'External',good:'What Lali already reads every day.',method:'Official API (free key)',feas:3,note:'Already connected through n8n. The Hub only adds filters.',url:'https://www.adzuna.com/'},
+ {id:'dice',name:'Dice',mono:'D',color:'#CC0C39',easy:'Easy Apply',good:'Tech-only US board, strong for IT and security.',method:'Job alert emails',feas:1,note:'No public API. Saved-search emails can be read by the Hub.',url:'https://www.dice.com/'},
+ {id:'wellfound',name:'Wellfound',mono:'W',color:'#111827',easy:'In-platform',good:'Startups. Short note + profile, good response rate.',method:'Job alert emails',feas:1,note:'No public API.',url:'https://wellfound.com/'},
+ {id:'zip',name:'ZipRecruiter',mono:'Z',color:'#1E7F3E',easy:'1-Click Apply',good:'Fast applications for entry-level roles.',method:'Aggregator API',feas:2,note:'Reached through Google for Jobs aggregators.',url:'https://www.ziprecruiter.com/'},
+ {id:'ats',name:'Company career pages',mono:'ATS',color:'#334155',easy:'External',good:'Greenhouse, Lever and Ashby boards of target companies, straight from the source.',method:'Free public APIs',feas:3,note:'Each board has an open JSON feed. Good for a \u201Cdream companies\u201D watch list.',url:''},
+ {id:'usajobs',name:'USAJOBS',mono:'US',color:'#112E51',easy:'In-platform',good:'Federal jobs, useful for security and research profiles.',method:'Official API (free key)',feas:3,note:'Official government API.',url:'https://www.usajobs.gov/'},
+ {id:'builtin',name:'Built In',mono:'BI',color:'#1B5ABF',easy:'External',good:'Tech jobs by city (Miami, Austin, NYC\u2026).',method:'Job alert emails',feas:1,note:'No public API.',url:'https://builtin.com/'},
+ {id:'hn',name:'Hacker News \u00B7 Who\u2019s Hiring',mono:'HN',color:'#FF6600',easy:'Email founders',good:'Monthly thread; startups that answer directly.',method:'Free public API',feas:3,note:'Open API. Many posts say \u201Cjuniors welcome\u201D.',url:'https://news.ycombinator.com/'},
+ {id:'handshake',name:'Handshake',mono:'H',color:'#E4572E',easy:'In-platform',good:'Built for students and recent grads.',method:'Needs 4Geeks to be a partner school',feas:1,note:'To confirm whether 4Geeks can join as a school.',url:'https://joinhandshake.com/'}
+];
+const SRCN=id=>SOURCES.find(s=>s.id===id);
+
+const J=[
+ {id:'j1',title:'Junior AI Engineer',company:'Northwind Labs',program:'AI Engineering',skills:['Python','RAG','FastAPI'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:9,hours:5,level:'Entry',source:'linkedin'},
+ {id:'j2',title:'AI Solutions Engineer',company:'Quillo',program:'AI Engineering',skills:['Python','OpenAI API','React','Customer success'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:14,hours:11,level:'Entry',source:'linkedin'},
+ {id:'j3',title:'AI Evaluation Analyst',company:'Veritas AI',program:'AI Engineering',skills:['LLM evals','Python','SQL'],mode:'Hybrid',loc:'Washington, DC',us:true,easy:true,applicants:6,hours:3,level:'Entry',source:'wellfound'},
+ {id:'j4',title:'Forward Deployed Engineer, New Grad',company:'Helio Cloud',program:'AI Engineering',skills:['Python','Customer success','OpenAI API'],mode:'Hybrid',loc:'Miami, FL',us:true,easy:true,applicants:22,hours:18,level:'Entry',source:'vertrix'},
+ {id:'j5',title:'AI Automation Engineer',company:'Orbitly',program:'AI Engineering',skills:['n8n','Python','Docker'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:31,hours:20,level:'Entry',source:'indeed'},
+ {id:'j18',title:'AI Implementation Specialist',company:'Promptly',program:'AI Engineering',adjacent:true,skills:['Customer success','OpenAI API'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:10,hours:2,level:'Entry',source:'linkedin'},
+ {id:'j19',title:'Applied AI Engineer I',company:'Lattice Health',program:'AI Engineering',skills:['Python','RAG','LangGraph'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:17,hours:8,level:'Entry',source:'vertrix'},
+ {id:'j6',title:'Senior ML Engineer',company:'Datapoint',program:'AI Engineering',skills:['Python','PyTorch'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:40,hours:6,level:'Senior',source:'linkedin'},
+ {id:'j7',title:'LLM Engineer',company:'Crescent Bank',program:'AI Engineering',skills:['Python','RAG'],mode:'On-site',loc:'New York, NY',us:true,easy:false,applicants:12,hours:8,level:'Entry',source:'linkedin'},
+ {id:'j8',title:'Frontend Developer (React)',company:'Palmway',program:'Full Stack',skills:['React','TypeScript'],mode:'Hybrid',loc:'Miami, FL',us:true,easy:true,applicants:12,hours:7,level:'Entry',source:'linkedin',partner:true},
+ {id:'j9',title:'Software Engineer I',company:'Cartwheel',program:'Full Stack',skills:['Node.js','React','PostgreSQL'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:27,hours:15,level:'Entry',source:'dice'},
+ {id:'j10',title:'Technical Support Engineer',company:'Fieldnote',program:'Full Stack',adjacent:true,skills:['JavaScript','SQL'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:18,hours:9,level:'Entry',source:'zip'},
+ {id:'j11',title:'Full Stack Developer',company:'Meridian Retail',program:'Full Stack',skills:['React','Node.js'],mode:'On-site',loc:'Chicago, IL',us:true,easy:true,applicants:140,hours:10,level:'Entry',source:'linkedin'},
+ {id:'j12',title:'Data Analyst I',company:'Coastal Health',program:'Data Science & ML',skills:['SQL','Python','Tableau'],mode:'Hybrid',loc:'Miami, FL',us:true,easy:true,applicants:16,hours:4,level:'Entry',source:'linkedin',partner:true},
+ {id:'j13',title:'Junior Data Scientist',company:'Lumen Analytics',program:'Data Science & ML',skills:['Python','scikit-learn','SQL'],mode:'Remote',loc:'Remote (US)',us:true,easy:true,applicants:21,hours:22,level:'Entry',source:'wellfound'},
+ {id:'j14',title:'BI Analyst',company:'Harbor Logistics',program:'Data Science & ML',skills:['SQL','Power BI'],mode:'Hybrid',loc:'Houston, TX',us:true,easy:true,applicants:11,hours:30,level:'Entry',source:'indeed'},
+ {id:'j15',title:'SOC Analyst I',company:'Sentinel Grid',program:'Cybersecurity',skills:['SIEM','Splunk','Linux'],mode:'On-site',loc:'Fort Lauderdale, FL',us:true,easy:true,applicants:8,hours:6,level:'Entry',source:'dice'},
+ {id:'j16',title:'IT Security Analyst',company:'Keystone Credit Union',program:'Cybersecurity',skills:['Networking','Linux'],mode:'Hybrid',loc:'Orlando, FL',us:true,easy:true,applicants:19,hours:13,level:'Entry',source:'linkedin'},
+ {id:'j17',title:'Cybersecurity Analyst',company:'Northstar Systems',program:'Cybersecurity',skills:['SIEM'],mode:'On-site',loc:'Toronto, Canada',us:false,easy:true,applicants:9,hours:5,level:'Entry',source:'adzuna'}
+];
+const PARTNERS=['Palmway','Coastal Health','Northwind Labs','Sentinel Grid','Another company'];
+const LOGOC=['#0080FF','#6D5BD0','#0E9384','#D9483B','#00071A','#2557A7','#B45309','#0F766E'];
+const logoColor=n=>LOGOC[[...n].reduce((a,c)=>a+c.charCodeAt(0),0)%LOGOC.length];
+
+/* Real research for GeekForce Weekly (opened Oct 1, 2026) */
+const WEEKLY={
+ date:'Week of Sep 28, 2026',
+ tabs:[
+  {id:'market',label:'Market pulse',items:[
+    {stat:'35%',t:'of entry-level job postings now ask for AI skills, nearly triple the share in fall 2025.',do:'Put AI projects first on every resume, including Full Stack and Data grads.',src:'NACE spring 2026, via IntuitionLabs',url:'https://intuitionlabs.ai/articles/ai-entry-level-employment-hiring-data'},
+    {stat:'\u22127.5%',t:'entry-level job postings year over year (May 2026). Fewer junior openings, more people applying.',do:'Speed matters: send roles within 24 hours and widen the titles you search.',src:'Indeed Hiring Lab, via IntuitionLabs',url:'https://intuitionlabs.ai/articles/ai-entry-level-employment-hiring-data'},
+    {stat:'+5.6%',t:'is how much employers expect to grow hiring for the class of 2026.',do:'There is demand; the work is finding it early and in the right places.',src:'NACE, via CNBC Select',url:'https://www.cnbc.com/select/class-of-2026-hiring-stats-and-ai-trends/'},
+    {stat:'~800%',t:'growth in Forward Deployed Engineer postings in a year. Palantir\u2019s FDSE track hires new grads.',do:'Add \u201CForward Deployed\u201D to AI searches, especially for grads with client-facing backgrounds.',src:'FDE Pulse',url:'https://fdepulse.com/'}
+  ]},
+  {id:'titles',label:'Titles to search',items:[]},
+  {id:'habits',label:'Habits & tips',items:[
+    {stat:'24 h',t:'Applying in the first 24\u201396 hours can bring up to 8x more interviews. An average posting gets about 242 applications.',do:'Filter LinkedIn by \u201CPast 24 hours\u201D (f_TPR=r86400) and sort by most recent.',src:'Applying early beats applying often',url:'https://vinayakapoor.com/applying-early-beats-applying-often/'},
+    {stat:'11 vs 3',t:'responses per 100 applications on Google Jobs versus LinkedIn. Wellfound gets 6 and Glassdoor 5.5.',do:'Keep LinkedIn as the base, but add Google Jobs and Wellfound to every sweep.',src:'Huntr job-site study, via BU Questrom',url:'https://questromfeld.bu.edu/blog/2026/03/10/announcing-the-9-best-job-search-sites-job-boards-of-2026-backed-by-600k-applications/'},
+    {stat:'3\u20135 of 8',t:'If a posting lists about 8 requirements and the grad meets 3\u20135, and the missing ones are not mandatory, it is worth sending.',do:'Don\u2019t wait for a 100% match. Juniors rarely have one.',src:'GeekForce team method',url:''},
+    {stat:'Easy Apply',t:'If a job says \u201CResponses managed off LinkedIn\u201D or the button says \u201CApply\u201D with an arrow, it sends the student to another site.',do:'Only send Easy Apply roles, and no more than 2 links per message.',src:'GeekForce USA team rule',url:''}
+  ]},
+  {id:'bootcamps',label:'What other bootcamps do',items:[
+    {stat:'5+',t:'Ironhack\u2019s Fast-track Interviews match each hiring company with at least 5 suitable candidates, without a job fair.',do:'Use the Talent Pipeline to send 3\u20135 profiles to each good job.',src:'Ironhack Careerhack',url:'https://www.ironhack.com/us/blog/careerhack-ironhack-s-new-streamlined-career-services'},
+    {stat:'1,100+',t:'companies have hired from Tech Elevator, which runs matchmaking events and mock interviews with real recruiters.',do:'Turn hiring partners into a recurring \u201CHiring Day\u201D with our grads.',src:'Tech Elevator career support',url:'https://www.techelevator.com/why-tech-elevator/career-support/'},
+    {stat:'Real clients',t:'TripleTen includes externships: real projects with companies, which give juniors experience for their resume.',do:'Offer partners a small project in exchange for early access to talent.',src:'TripleTen externships',url:'https://tripleten.com/externships/'},
+    {stat:'4 tracks',t:'Le Wagon separates job seekers, freelancers, founders and upskillers, each with its own goals.',do:'Don\u2019t measure a freelancer with the same weekly quota as a job seeker.',src:'Le Wagon career services',url:'https://www.lewagon.com/career-services'}
+  ]}
+ ]
+};
+const TITLESETS={
+ 'AI Engineering':{fresh:['Forward Deployed Engineer','AI Solutions Engineer','AI Implementation Specialist','AI Integration Specialist'],base:['AI Engineer','Applied AI Engineer','AI Software Engineer','AI Automation Engineer','LLM / RAG Engineer','AI Trainer (Coding)','Technical Support Engineer (AI)']},
+ 'Full Stack':{fresh:['Implementation Engineer','Integration Engineer'],base:['Software Engineer I','Full Stack Developer','Frontend Developer (React)','QA Automation Engineer','Solutions Engineer']},
+ 'Data Science & ML':{fresh:['Analytics Engineer (Junior)','Data Analytics Associate'],base:['Data Analyst','BI Analyst','Junior Data Scientist','Machine Learning Engineer (Junior)']},
+ 'Cybersecurity':{fresh:['GRC Analyst','Threat Intelligence Analyst'],base:['SOC Analyst I','Cybersecurity Analyst','Vulnerability Analyst','IT Support Specialist']}
+};
+const PROG_URL={'AI Engineering':'https://4geeks.com/en/career-programs/ai-engineering','Full Stack':'https://4geeks.com/en/career-programs/full-stack','Data Science & ML':'https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning','Cybersecurity':'https://4geeks.com/en/career-programs/cybersecurity'};
+const ZR='ZipRecruiter, checked Oct 1, 2026';
+/* Why each title fits a 4Geeks program. Tools come from each program page; pay comes from ZipRecruiter listing pages. */
+const TITLE_INFO={
+ 'AI Engineer':{p:'AI Engineering',why:'The obvious title, and the most crowded one. LinkedIn ranks it the fastest-growing US job, so every new grad applies here.',tools:['Python and FastAPI','LLMs, RAG and vector databases','Tool calling, MCP and agents'],pay:'Entry level: about $69K a year (most $51.5K\u2013$78.5K)',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Ai-Engineer',beyond:'Keep it in the mix, but never alone: the same work hides behind the titles below with far fewer applicants.'},
+ 'Forward Deployed Engineer':{p:'AI Engineering',why:'Engineers who sit with a client and build an AI solution for that company. Postings grew about 800% in a year, and some companies run new-grad tracks.',tools:['The capstone: turning a company into an AI-native business','RAG, agents and FastAPI back ends','Explaining technical work to non-technical people'],pay:'Entry level: $51K\u2013$102K',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Forward-Deployed-Engineer',beyond:'4Geeks lists it as a target role for AI Engineering. It rewards grads who come from sales, teaching or customer service.'},
+ 'AI Solutions Engineer':{p:'AI Engineering',why:'The technical person in the sales team: builds demos and proofs of concept, and answers technical questions from clients.',tools:['Quick prototypes with LLM APIs','n8n automations to show value fast','Previous client-facing experience'],pay:'Entry-level Solutions Engineer: about $69K (most $51.5K\u2013$78.5K)',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Solutions-Engineer',beyond:'Companies often say \u201CSolutions Engineer\u201D when they mean an AI engineer who can talk to clients.'},
+ 'AI Implementation Specialist':{p:'AI Engineering',why:'Sets up and configures AI tools for each client, trains their team and fixes problems. Less coding pressure than a pure engineering role.',tools:['n8n workflows and tool calling','Connecting APIs to business processes','Documenting and testing'],pay:'About $70.9K a year on average ($34/hour)',payUrl:'https://www.ziprecruiter.com/Jobs/Ai-Implementation-Specialist',beyond:'Few bootcamp grads search this title, so applicant counts stay low.'},
+ 'AI Integration Specialist':{p:'AI Engineering',why:'Connects AI models to a company\u2019s existing systems: CRMs, databases, internal tools.',tools:['REST APIs with FastAPI','MCP and tool calling','Authentication and security basics (OWASP)'],pay:'Entry level: about $91.6K (most $63.5K\u2013$121K)',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Ai-Integration-Specialist',beyond:'Well paid and close to what the program\u2019s back-end projects already do.'},
+ 'Applied AI Engineer':{p:'AI Engineering',why:'Same job as AI Engineer, framed around shipping AI inside real products instead of research.',tools:['RAG and vector databases','Agents with memory','FastAPI back ends'],pay:'Grouped with entry-level AI engineer pay (about $69K)',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Ai-Engineer',beyond:'A common alternative title in US postings for the same skills.'},
+ 'AI Software Engineer':{p:'AI Engineering',why:'A software engineer who builds features with LLMs. One of the three roles 4Geeks names for the program.',tools:['Python, FastAPI, WebSockets','LLM integration and testing','Async processing and queues'],pay:'4Geeks lists $95K\u2013$135K for this role',payUrl:'https://4geeks.com/en/career-programs/ai-engineering',beyond:'Reaches companies that write \u201CSoftware Engineer\u201D in the title but want AI skills.'},
+ 'AI Automation Engineer':{p:'AI Engineering',why:'Automates business workflows with AI: lead routing, support triage, reporting.',tools:['n8n','Agents and tool calling','Python scripting'],pay:'',payUrl:'',beyond:'Great for grads with an operations background. Small and mid-size companies hire for it.'},
+ 'LLM / RAG Engineer':{p:'AI Engineering',why:'Specializes in making LLMs answer from a company\u2019s own documents.',tools:['RAG pipelines','Vector databases','Evaluating answer quality'],pay:'',payUrl:'',beyond:'A precise keyword: postings that use it describe exactly what the program teaches.'},
+ 'AI Trainer (Coding)':{p:'AI Engineering',why:'Remote, flexible work reviewing and correcting code and answers that AI models produce.',tools:['Python','Judging LLM output quality','Clear written feedback'],pay:'Entry-level remote: about $24.74/hour',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Remote-Ai-Trainer',beyond:'A bridge job, not a destination. It adds AI experience to the resume, and at 15+ hours a week it can count as a qualified offer.'},
+ 'Technical Support Engineer (AI)':{p:'AI Engineering',why:'Solves technical problems for customers of AI and software products. GeekFORCE policy asks grads to apply to technical support roles too.',tools:['APIs and debugging','SQL','Explaining fixes to customers'],pay:'Entry level: about $79K (most $58K\u2013$98.5K)',payUrl:'https://www.ziprecruiter.com/Salaries/Entry-Level-Technical-Support-Engineer-Salary',beyond:'A frequent first job at AI companies, with a path into engineering.'},
+ 'Implementation Engineer':{p:'Full Stack',why:'Onboards new clients onto a software product: configuration, data imports, small integrations.',tools:['REST APIs','SQL and SQLAlchemy','JavaScript and Python'],pay:'All levels: about $107K on average',payUrl:'https://www.ziprecruiter.com/Salaries/Implementation-Engineer-Salary',beyond:'Values people skills as much as code, which suits career changers.'},
+ 'Integration Engineer':{p:'Full Stack',why:'Builds the connections between a company\u2019s systems and third-party tools.',tools:['REST API design and authentication','Python and Flask','Database integration'],pay:'All levels: about $124K on average',payUrl:'https://www.ziprecruiter.com/Salaries/Integration-Engineer-Salary',beyond:'The REST API projects in the program map straight onto it.'},
+ 'Software Engineer I':{p:'Full Stack',why:'The most common US title for a junior developer. Many companies never write \u201Cjunior\u201D.',tools:['React, JavaScript, Python','REST APIs','Git and Agile'],pay:'',payUrl:'',beyond:'Searching only \u201CJunior Developer\u201D misses most of these postings.'},
+ 'Full Stack Developer':{p:'Full Stack',why:'The program\u2019s main target. 4Geeks lists $75K\u2013$110K for an AI-fluent full stack developer.',tools:['React front ends','Flask and REST back ends','One AI-powered endpoint in every project'],pay:'4Geeks lists $75K\u2013$110K',payUrl:'https://4geeks.com/en/career-programs/full-stack',beyond:'Add \u201CAI-fluent\u201D to the resume headline: 35% of entry-level postings now ask for AI skills.'},
+ 'Frontend Developer (React)':{p:'Full Stack',why:'Builds the parts of a website or app that users see.',tools:['React with hooks and routing','HTML, CSS, JavaScript ES6+','Single-page apps'],pay:'',payUrl:'',beyond:'A good fit for grads with design or marketing backgrounds.'},
+ 'QA Automation Engineer':{p:'Full Stack',why:'Writes automated tests that keep software from breaking.',tools:['JavaScript and Python','Testing APIs','Coding agents for test scaffolding'],pay:'Entry level: about $107K (most $88.5K\u2013$123.5K)',payUrl:'https://www.ziprecruiter.com/Salaries/Entry-Level-Qa-Automation-Engineer-Salary',beyond:'Well paid and often overlooked by bootcamp grads.'},
+ 'Solutions Engineer':{p:'Full Stack',why:'Technical pre-sales: demos, client questions and proposals.',tools:['Building demos quickly','APIs','Communication'],pay:'Entry level: about $69K (most $51.5K\u2013$78.5K)',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Solutions-Engineer',beyond:'Policy lists tech sales as an adjacent role grads should apply to.'},
+ 'Data Analyst':{p:'Data Science & ML',why:'Turns data into answers for the business. The biggest entry door into data.',tools:['Python, Pandas, NumPy','SQL','Looker and Streamlit dashboards'],pay:'Entry level: about $68.5K (most $44K\u2013$76.5K)',payUrl:'https://www.ziprecruiter.com/Salaries/Entry-Level-Data-Analyst-Salary',beyond:'GeekFORCE policy also lists data analyst as an adjacent role for grads of other programs.'},
+ 'BI Analyst':{p:'Data Science & ML',why:'Builds the reports and dashboards managers use every week.',tools:['SQL','Looker (Google Data Studio)','KPI reporting'],pay:'Entry level: about $38.63/hour',payUrl:'https://www.ziprecruiter.com/Jobs/Entry-Level-Bi-Analyst',beyond:'Many companies say \u201CBI\u201D instead of \u201Cdata analyst\u201D.'},
+ 'Analytics Engineer (Junior)':{p:'Data Science & ML',why:'Cleans and models data so analysts can trust it. Sits between data engineering and analysis.',tools:['SQL','Data collection with APIs and scraping','Python pipelines'],pay:'',payUrl:'',beyond:'A growing title that pays more than analyst roles.'},
+ 'Data Analytics Associate':{p:'Data Science & ML',why:'Entry-level analytics role in consulting, finance and healthcare.',tools:['Statistics','SQL and Python','Data visualization'],pay:'Entry-level data analytics: about $81.5K (most $59.5K\u2013$96.5K)',payUrl:'https://www.ziprecruiter.com/Salaries/Entry-Level-Data-Analytics-Salary',beyond:'Reaches big employers that use \u201CAssociate\u201D for every junior role.'},
+ 'Junior Data Scientist':{p:'Data Science & ML',why:'Builds and tests predictive models.',tools:['scikit-learn and TensorFlow','Statistics and probability','Model deployment'],pay:'',payUrl:'',beyond:'Fewer openings than analyst roles, so send it alongside, not instead.'},
+ 'Machine Learning Engineer (Junior)':{p:'Data Science & ML',why:'Puts models into production.',tools:['Applied machine learning','Deep learning and NLP','Model deployment'],pay:'',payUrl:'',beyond:'Filter out senior postings: most ML Engineer roles ask for years of experience.'},
+ 'SOC Analyst I':{p:'Cybersecurity',why:'Watches security alerts and responds to incidents. The classic first security job.',tools:['Wireshark and packet analysis','Linux','NIST incident response'],pay:'Entry level: about $57.8K (most $40K\u2013$62.5K)',payUrl:'https://www.ziprecruiter.com/Salaries/Entry-Level-Soc-Analyst-Salary',beyond:'Many openings and clear entry requirements, often Security+, which the program prepares for.'},
+ 'GRC Analyst':{p:'Cybersecurity',why:'Governance, risk and compliance: checks that a company meets security rules and frameworks.',tools:['The NIST framework module','Risk management','Security assessments'],pay:'Entry level: about $97.7K (most $55K\u2013$111K)',payUrl:'https://www.ziprecruiter.com/Jobs/Entrylevel-Grc-Analyst',beyond:'Less technical, well paid, and a great fit for grads with legal, audit or admin backgrounds.'},
+ 'Cybersecurity Analyst':{p:'Cybersecurity',why:'The program\u2019s main target role.',tools:['Nmap, Nessus, Wireshark','Threat intelligence','Security+ preparation'],pay:'Entry level: about $99.4K (most $79.5K\u2013$115.5K)',payUrl:'https://www.ziprecruiter.com/Salaries/Entry-Level-Cyber-Security-Analyst-Salary',beyond:'Search it next to SOC and GRC: companies use the three almost interchangeably.'},
+ 'Vulnerability Analyst':{p:'Cybersecurity',why:'Scans systems for weaknesses and tracks the fixes.',tools:['Nessus and Nmap','Network vulnerability assessment project','Metasploit'],pay:'',payUrl:'',beyond:'Matches one of the program\u2019s hands-on projects almost exactly.'},
+ 'Threat Intelligence Analyst':{p:'Cybersecurity',why:'Researches attackers and threats and writes reports.',tools:['OSINT techniques','Threat intelligence reports','Cyber intelligence module'],pay:'',payUrl:'',beyond:'Also opens Trust & Safety roles at tech platforms.'},
+ 'IT Support Specialist':{p:'Cybersecurity',why:'A bridge job that builds the hands-on hours many security roles ask for.',tools:['Linux and server administration','Networking','Access control'],pay:'',payUrl:'',beyond:'Not the goal, but it counts as tech experience while the grad keeps applying to security roles.'}
+};
+
+const AUTOS=[
+ {id:'a0',name:'Daily job sweep',when:'Every day, 10:00 AM ET',out:'Job Radar',desc:'Searches every source turned on for the last 24 hours, using the title sets for each program. Runs once a day so it doesn\u2019t waste servers or tokens.'},
+ {id:'a9',name:'GeekForce Weekly',when:'Mondays, 10:00 AM ET',out:'Top of the Overview',desc:'Researches hiring news in North America, new job titles to search, tips and what other bootcamps are doing, with sources.'},
+ {id:'a1',name:'Lali feed filter',when:'Right after the sweep',out:'Job Radar',desc:'Drops anything outside the US, not Easy Apply, senior, older than 24 hours or with more than 50 applicants.'},
+ {id:'a2',name:'Graduate\u2013job matching',when:'When a job enters the radar',out:'Job Radar + Job Hunting Tracker',desc:'Scores each job against every job-seeking graduate: program, skills from the Talent Pipeline profile, and work mode.'},
+ {id:'a3',name:'Daily job digest',when:'Weekdays, 11:00 AM ET',out:'Slack DM drafts for coach approval',desc:'One message per graduate with their best Easy Apply roles. Never more than 2 links.'},
+ {id:'a4',name:'Not Started ladder',when:'Daily',out:'Slack + email, Notion',desc:'Day 7 without a first 1-1: follow-up. Day 15: flag for automatic pause. Day 30: Job Guarantee alert.'},
+ {id:'a5',name:'Stage 3 check-in reminder',when:'Daily',out:'Coach Slack',desc:'Flags anyone in Stage 3 with no check-in for 14 days, using CS Date of last follow up.'},
+ {id:'a6',name:'Weekly quota check',when:'Mondays',out:'Coach Slack + Notion',desc:'Job Guarantee: 15 qualified applications a week. Professional Support: 5\u201310.'},
+ {id:'a7',name:'Interview kit',when:'When a card moves to Interview',out:'Slack DM draft + Calendly',desc:'Company summary, likely questions and a link to book a mock interview.'},
+ {id:'a8',name:'Talent Pipeline shortlist',when:'When a partner posts a job',out:'Draft for Partnerships',desc:'Picks the 3\u20135 best profiles so the team can send them, like Ironhack\u2019s Fast-track Interviews.'}
+];
+
+const INTEGRATIONS=[
+ {id:'n1',name:'Notion \u00B7 Student Tracker',use:'GeekForce Status, Stages completion, Action Items, CS Date of last follow up, cohort views and \u201CTo be placed\u201D.',phase:'Read first, then write'},
+ {id:'n2',name:'Notion \u00B7 Job Hunting Tracker',use:'Each graduate\u2019s applications. Used to check the weekly quota.',phase:'Read first, then write'},
+ {id:'n3',name:'Notion \u00B7 Student Profile',use:'1-1 notes, student and teacher SWOT, Career Support Summary.',phase:'Read only'},
+ {id:'n4',name:'Notion \u00B7 Talent Pipeline',use:'Stack, seniority, top 3 skills, location, remote / on-site / relocation.',phase:'Read only'},
+ {id:'n5',name:'Lali \u00B7 AI Jobs Pipeline',use:'The daily n8n sheet fed by Adzuna. The Hub filters it instead of replacing it.',phase:'Read only'},
+ {id:'n6',name:'Slack',use:'#geekforce-usa job feed, #career-support-usa alerts, DMs to graduates as drafts.',phase:'Read first, then drafts'},
+ {id:'n7',name:'Calendly',use:'1-1s and mock interviews. A completed session updates the stage.',phase:'Read only'},
+ {id:'n8',name:'ActiveCampaign',use:'GeekForce launch emails to each cohort.',phase:'Later phase'},
+ {id:'n9',name:'Google Forms',use:'Initial survey and teacher evaluation. Feeds the SIP and SWOT.',phase:'Read only'}
+];
+
+/* ================= state ================= */
+const S={
+  gf:{q:'',program:'All',stage:'All',plan:'All',risk:false},
+  rf:{program:'All',source:'all',view:'all',q:'',modes:{Remote:true,Hybrid:true,'On-site':true},showRejected:false,sort:'fresh'},
+  pf:{program:'All',mode:'All',q:'',job:'j1'},
+  wtab:'market',donut:null,
+  sweep:{time:'10:00',window:'24',on:{linkedin:true,vertrix:true,indeed:true,google:true,adzuna:true,dice:true,wellfound:true,zip:false,ats:false,usajobs:false,builtin:false,hn:false,handshake:false},lastRun:'Today, 10:00 AM ET',titles:JSON.parse(JSON.stringify(TITLESETS))},
+  autosOn:{a0:true,a9:true,a1:true,a2:true,a3:true,a4:true,a5:true,a6:true,a7:true,a8:false},
+  autoLog:[],integ:{},srcConn:{adzuna:true},done:{},sent:{},openMatches:{},roadmap:{},
+  tracker:{},logs:{},noticeHidden:false
+};
+G.forEach(g=>{
+  S.logs[g.id]=[{d:g.last===0?'Today':g.last+' days ago',t:g.stage==='not_started'?'GeekForce launch email sent':'Check-in 1-1',by:g.stage==='not_started'?'ActiveCampaign':'Coach \u00B7 Calendly'}];
+  S.tracker[g.id]={Saved:[],Applied:[],Interview:[],Offer:[]};
+});
+S.tracker.jd={Saved:[{t:'AI Implementation Specialist',c:'Promptly',auto:true}],Applied:[{t:'Junior AI Engineer',c:'Northwind Labs',auto:true},{t:'Solutions Engineer',c:'Tandem Ops',auto:false}],Interview:[],Offer:[]};
+S.tracker.ak={Saved:[],Applied:[{t:'Trust & Safety Analyst',c:'Civic Signal',auto:false}],Interview:[{t:'AI Evaluation Analyst',c:'Veritas AI',auto:true}],Offer:[]};
+S.tracker.ec={Saved:[{t:'Junior Data Scientist',c:'Lumen Analytics',auto:true}],Applied:[{t:'Data Analyst I',c:'Coastal Health',auto:true}],Interview:[{t:'Research Data Analyst',c:'Bayview Labs',auto:false}],Offer:[]};
+S.tracker.lt={Saved:[],Applied:[{t:'Frontend Developer (React)',c:'Palmway',auto:true},{t:'Software Engineer I',c:'Cartwheel',auto:true}],Interview:[],Offer:[]};
+S.logs.ak.unshift({d:'Today',t:'Moved to Interview at Veritas AI',by:'Automatic \u00B7 Job Hunting Tracker'});
+
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const byId=id=>G.find(g=>g.id===id);
+const jobById=id=>J.find(j=>j.id===id);
+const ini=n=>n.split(' ').map(w=>w[0]).join('').slice(0,2);
+const first=n=>n.split(' ')[0];
+const avatar=(g,cls='')=>`<span class="avatar ${cls}" style="background:${pc(g.program)}" aria-hidden="true">${ini(g.name)}</span>`;
+const stageChip=s=>`<span class="chip ${STAGES[s].cls}">${STAGES[s].label}</span>`;
+const progDot=p=>`<span class="dotc" style="background:${pc(p)}"></span>`;
+const seeking=g=>g.stage==='s3'||g.stage==='interviewing';
+const now=()=>new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+const I={
+  check:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M5 12l5 5L20 7"/></svg>',
+  left:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>',
+  right:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>',
+  x:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  clock:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  clockLg:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  ext:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>'
+};
+function rejectReasons(j){
+  const r=[];
+  if(!j.us) r.push('Outside the US');
+  if(!j.easy) r.push('Not Easy Apply');
+  if(j.level==='Senior') r.push('Senior level');
+  if(j.applicants>50) r.push('Over 50 applicants');
+  if(j.hours>24) r.push('Older than 24 hours');
+  return r;
+}
+const passes=j=>rejectReasons(j).length===0;
+function match(g,j){
+  if(g.program!==j.program) return 0;
+  const hits=j.skills.filter(s=>g.skills.includes(s)).length;
+  return Math.min(97,50+Math.round(40*hits/j.skills.length)+(g.modes.includes(j.mode)?8:0));
+}
+const matchesFor=j=>G.filter(seeking).map(g=>({g,m:match(g,j)})).filter(x=>x.m>=70).sort((a,b)=>b.m-a.m);
+const jobsFor=g=>J.filter(passes).map(j=>({j,m:match(g,j)})).filter(x=>x.m>=70).sort((a,b)=>b.m-a.m);
+function risk(g){
+  if(g.stage==='placed') return null;
+  if(g.stage==='not_started'){
+    if(g.last>=30) return {lvl:'red',t:'Over 30 days: Job Guarantee at risk'};
+    if(g.last>=15) return {lvl:'red',t:g.last+' days without a first 1-1: pause'};
+    if(g.last>=7) return {lvl:'red',t:g.last+' days without booking'};
+    return null;
+  }
+  if(seeking(g)&&g.last>=14) return {lvl:'red',t:g.last+' days without a check-in'};
+  if(seeking(g)&&g.apps<PLANS[g.plan].apps) return {lvl:'blue',t:g.apps+'/'+PLANS[g.plan].apps+' applications'};
+  return null;
+}
+function ring(pct,size=64,stroke=6){
+  const r=(size-stroke)/2,c=2*Math.PI*r,off=c*(1-pct/100);
+  return `<div class="ring" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="${stroke}"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--accent)" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 ${size/2} ${size/2})"/></svg><span>${pct}%</span></div>`;
+}
+function spark(vals,w=160,h=36){
+  const mx=Math.max(...vals),mn=Math.min(...vals),sx=w/(vals.length-1);
+  const pts=vals.map((v,i)=>[i*sx,h-4-(v-mn)/((mx-mn)||1)*(h-8)]);
+  const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const last=pts[pts.length-1];
+  return `<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path d="${d} L${w} ${h} L0 ${h}Z" fill="var(--accent-soft)"/><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="${last[0]}" cy="${last[1]}" r="3" fill="var(--accent)"/></svg>`;
+}
+
+/* toasts, modal, confetti */
+function toast(msg,sub){
+  const el=document.createElement('div');el.className='toast';
+  el.innerHTML=`<span class="ic">${I.check}</span><div>${esc(msg)}${sub?'<small>'+esc(sub)+'</small>':''}</div>`;
+  $('#toasts').appendChild(el);setTimeout(()=>el.remove(),4200);
+}
+const SIM='Simulated in the mockup. Nothing was sent.';
+let modalActions=[],lastFocus=null;
+function openModal(title,body,actions,cls=''){
+  if(!$('#modal-root').innerHTML)lastFocus=document.activeElement;
+  modalActions=actions||[];
+  $('#modal-root').innerHTML=`<div class="modal-bg" data-act="modal-bg"><div class="modal ${cls}" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <div class="between"><h2 id="mt">${title}</h2><button class="iconbtn sm" data-act="modal-close" aria-label="Close">${I.x}</button></div>
+    <div class="stack">${body}</div>
+    ${modalActions.length?`<div class="row" style="justify-content:flex-end">${modalActions.map((a,i)=>`<button class="btn ${a.kind||'ghost'}" data-act="modal-action" data-i="${i}">${esc(a.label)}</button>`).join('')}</div>`:''}
+  </div></div>`;
+  const f=$('#modal-root .modal input, #modal-root .modal select, #modal-root .modal button');if(f)f.focus();
+}
+function closeModal(){$('#modal-root').innerHTML='';modalActions=[];$('#modal-root').onchange=null;if(lastFocus&&document.contains(lastFocus))lastFocus.focus({preventScroll:true});lastFocus=null}
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const cv=$('#confetti'),ctx=cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;
+  const cols=['#0080FF','#FFBE1A','#6D5BD0','#0E9384','#00071A','#99CCFF'];
+  const ps=Array.from({length:140},()=>({x:innerWidth/2+(Math.random()-.5)*200,y:innerHeight*.35,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:Math.random()*6+3,c:cols[Math.floor(Math.random()*cols.length)],a:Math.random()*6}));
+  let t=0;(function f(){ctx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.a+=.2;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.c;ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);ctx.restore()});if(++t<110)requestAnimationFrame(f);else ctx.clearRect(0,0,cv.width,cv.height)})();
+}
+
+/* ================= screens ================= */
+function pageHead(eyebrow,title,sub,right){
+  return `<div class="between" style="align-items:flex-end"><div class="stack" style="gap:10px;max-width:780px"><span class="eyebrow">${eyebrow}</span><h1>${title}</h1>${sub?`<p class="muted" style="font-size:17px;max-width:66ch">${sub}</p>`:''}</div>${right||''}</div>`;
+}
+function nextSweep(){
+  const [h,m]=S.sweep.time.split(':').map(Number);
+  const d=new Date();const t=new Date(d);t.setHours(h,m,0,0);if(t<=d)t.setDate(t.getDate()+1);
+  const diff=Math.round((t-d)/60000);return {label:(t.getDate()===d.getDate()?'Today':'Tomorrow')+' \u00B7 '+fmt12(S.sweep.time)+' ET',in:Math.floor(diff/60)+'h '+(diff%60)+'m'};
+}
+const fmt12=t=>{const [h,m]=t.split(':').map(Number);return ((h+11)%12+1)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM')};
+
+function vHome(){
+  const active=G.filter(seeking);
+  const apps=G.reduce((a,g)=>a+g.apps,0);
+  const placed=G.filter(g=>g.stage==='placed').length;
+  const atRisk=G.filter(g=>{const r=risk(g);return r&&r.lvl==='red'}).length;
+  const pass=J.filter(passes).length;
+  const ns=nextSweep();
+  const titles=[...new Set(Object.values(TITLESETS).flatMap(s=>[...s.fresh,...s.base]))];
+  const wt=WEEKLY.tabs.find(t=>t.id===S.wtab);
+  const counts=STAGE_ORDER.map(s=>({s,n:G.filter(g=>g.stage===s).length}));
+  const total=G.length;
+  let acc=0;const R=70,C=2*Math.PI*R;
+  const segs=counts.map(({s,n})=>{const len=n/total*C;const o=`<circle class="seg ${S.donut===s?'on':''}" data-act="donut" data-s="${s}" cx="95" cy="95" r="${R}" fill="none" stroke="${STAGES[s].color}" stroke-width="24" stroke-dasharray="${Math.max(0,len-3)} ${C}" stroke-dashoffset="${-acc}" transform="rotate(-90 95 95)"><title>${STAGES[s].label}: ${n}</title></circle>`;acc+=len;return o}).join('');
+  const sel=S.donut?counts.find(c=>c.s===S.donut):null;
+  const cum=STAGE_ORDER.map(s=>G.filter(g=>STAGE_ORDER.indexOf(g.stage)>=STAGE_ORDER.indexOf(s)).length);
+  const fr=[['In GeekForce',cum[0]],['Started (first 1-1)',cum[1]],['Profile approved',cum[2]],['Job hunting',cum[3]],['Interviewing',cum[4]],['Placed',cum[5]]];
+  const weeks=[38,44,41,52,61,58,72,apps];
+  const jg=G.filter(g=>g.plan==='JG'&&seeking(g));
+  const reasonColors={'Outside the US':'#98A1B4','Not Easy Apply':'#D9483B','Senior level':'#6D5BD0','Over 50 applicants':'#00071A','Older than 24 hours':'#99CCFF'};
+  const reasonCounts={};J.forEach(j=>{const r=rejectReasons(j)[0];if(r)reasonCounts[r]=(reasonCounts[r]||0)+1});
+  const todos=[];
+  G.forEach(g=>{const r=risk(g);if(r&&r.lvl==='red')todos.push({k:'r-'+g.id,c:'var(--danger)',t:`${g.name}: ${r.t}`,go:'grad-'+g.id})});
+  G.filter(g=>g.stage==='interviewing').forEach(g=>todos.push({k:'i-'+g.id,c:'var(--accent)',t:`${g.name} is interviewing: send the kit and book a mock`,go:'grad-'+g.id}));
+  J.filter(j=>j.partner&&passes(j)).forEach(j=>todos.push({k:'p-'+j.id,c:'var(--p-fs)',t:`${j.company} (partner) posted ${j.title}: ${matchesFor(j).length} graduate(s) fit`,go:'radar'}));
+  return `
+  <section class="hero">
+    <div class="stack" style="gap:18px;justify-content:center">
+      ${S.noticeHidden?'':`<div class="mockline" role="note"><span class="chip line" style="flex-shrink:0">Prototype</span><span><b>This is a working mockup for team review.</b> Graduates, companies, jobs and numbers are sample data. Buttons only simulate actions; nothing is sent or connected yet. GeekForce Weekly uses real, linked research. <button class="namebtn" style="color:var(--accent-ink);font-weight:600" data-act="hide-notice">Hide</button></span></div>`}
+      <span class="eyebrow">GeekForce USA \u00B7 ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}</span>
+      <h1>Good morning, team. <em class="hl">${atRisk} graduates</em> need you today.</h1>
+      <p class="muted" style="font-size:17px;max-width:60ch">${active.length} graduates are job hunting, ${pass} fresh Easy Apply roles passed today\u2019s filters, and ${G.filter(g=>g.stage==='interviewing').length} people are in interviews.</p>
+      <div class="row"><a class="btn primary" href="#radar">Open today\u2019s jobs</a><a class="btn ghost" href="#graduates" data-act="risk-filter">See who needs attention</a></div>
+    </div>
+    <aside class="sweep">
+      <span class="glow"></span>
+      <div class="between"><span class="chip">${I.clock} Daily job sweep</span><span class="chip">Last ${S.sweep.window} h</span></div>
+      <div><div class="big num">${pass}</div><div class="sub">jobs passed the rules this morning, from ${J.length} found across ${Object.values(S.sweep.on).filter(Boolean).length} sources</div></div>
+      <div class="between" style="border-top:1px solid rgba(127,127,127,.25);padding-top:14px"><div><div style="font-weight:700">Next sweep</div><div class="sub">${ns.label} \u00B7 in ${ns.in}</div></div><a class="btn sm" href="#radar" data-act="sweep-settings" style="background:var(--accent);color:#fff">Settings</a></div>
+    </aside>
+  </section>
+  <div class="stack" style="gap:8px"><span class="faint">Job titles the daily sweep searches. Click one to see why it fits our graduates.</span><div class="marquee"><div class="track">${[...titles,...titles].map((t,k)=>`<button class="mq" data-act="title-info" data-t="${esc(t)}" ${k>=titles.length?'tabindex="-1" aria-hidden="true"':''}><i style="background:${pc(TITLE_INFO[t]?TITLE_INFO[t].p:'AI Engineering')}"></i>${esc(t)}</button>`).join('')}</div></div></div>
+
+  <section class="weekly" aria-labelledby="wk">
+    <div class="between">
+      <div class="stack" style="gap:6px"><span class="eyebrow">GeekForce Weekly \u00B7 ${WEEKLY.date}</span><h2 id="wk" style="font-size:26px">What the team should know this week</h2></div>
+      <div class="row"><span class="chip ok">Real research, linked</span><span class="chip blue">${I.clock} Updates Mondays 10:00 AM ET</span></div>
+    </div>
+    <div class="wtabs" role="tablist">${WEEKLY.tabs.map(t=>`<button role="tab" aria-selected="${S.wtab===t.id}" data-act="wtab" data-t="${t.id}">${t.label}</button>`).join('')}</div>
+    ${S.wtab==='titles'?`<div class="stack">
+      <p class="muted">\u201CAI Engineer\u201D alone is crowded, and US companies use many names for the same job. Click a title to see which program it fits, why our graduates qualify, typical pay and where to look. <span class="faint">Sources: 4Geeks program pages, ZipRecruiter pay pages (checked Oct 1, 2026), <a href="https://www.ivanturkovic.com/the-ai-job-title-reference-guide-2026/" target="_blank" rel="noopener">AI Job Title Reference Guide 2026</a> and <a href="https://fdepulse.com/" target="_blank" rel="noopener">FDE Pulse</a>.</span></p>
+      ${PROGRAMS.map(p=>`<div class="stack" style="gap:8px"><div class="row" style="font-weight:700">${progDot(p)}${p}</div><div class="titlecloud">${TITLESETS[p].fresh.map(t=>`<button class="new" data-act="title-info" data-p="${p}" data-t="${esc(t)}">${esc(t)}</button>`).join('')}${TITLESETS[p].base.map(t=>`<button data-act="title-info" data-p="${p}" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div></div>`).join('')}
+    </div>`:`<div class="witems">${wt.items.map(i=>`<article class="witem"><div class="stat num">${i.stat}</div><p>${esc(i.t)}</p><div class="do"><b>Try this:</b> ${esc(i.do)}</div><div class="so">${i.url?`<a href="${i.url}" target="_blank" rel="noopener">${esc(i.src)} ${I.ext}</a>`:esc(i.src)}</div></article>`).join('')}</div>`}
+  </section>
+
+  <div class="kpis">
+    <a class="kpi" href="#graduates"><span class="l">Graduates job hunting</span><span class="v">${active.length}</span><span class="s">Stage 3 + interviewing</span>${spark([4,5,5,6,6,7,6,active.length])}</a>
+    <a class="kpi" href="#radar"><span class="l">Applications this week</span><span class="v" style="color:var(--accent-ink)">${apps}</span><span class="s">From Job Hunting Trackers</span>${spark(weeks)}</a>
+    <a class="kpi" href="#graduates"><span class="l">Interviewing</span><span class="v">${G.filter(g=>g.stage==='interviewing').length}</span><span class="s">Active processes</span>${spark([0,1,1,1,2,1,2,2])}</a>
+    <a class="kpi" href="#graduates"><span class="l">Placed</span><span class="v">${placed}<span style="font-size:18px;margin-left:6px" aria-hidden="true">\u2605</span></span><span class="s">Qualified offers</span>${spark([0,0,1,1,1,1,2,placed])}</a>
+    <a class="kpi alert" href="#graduates" data-act="risk-filter"><span class="l">Need attention</span><span class="v">${atRisk}</span><span class="s">Overdue check-ins or no first 1-1</span>${spark([2,3,3,4,3,5,4,atRisk])}</a>
+  </div>
+
+  <div class="grid g2">
+    <section class="card stack">
+      <div class="between"><h2>Where everyone is</h2><span class="faint">Click a stage to filter</span></div>
+      <div class="donutwrap">
+        <svg class="donut" width="190" height="190" viewBox="0 0 190 190" role="img" aria-label="Graduates by stage">${segs}
+          <text x="95" y="90" text-anchor="middle" font-family="Inter" font-weight="800" font-size="34" fill="var(--fg)">${sel?sel.n:total}</text>
+          <text x="95" y="112" text-anchor="middle" font-size="12" fill="var(--faint)">${sel?esc(STAGES[sel.s].label.split(' \u00B7 ')[0]):'graduates'}</text></svg>
+        <div class="legendlist">${counts.map(({s,n})=>`<button class="${S.donut===s?'on':''}" data-act="donut" data-s="${s}"><span class="dotc" style="background:${STAGES[s].color}"></span>${STAGES[s].label}<b>${n}</b></button>`).join('')}
+          ${S.donut?`<a class="btn ghost sm" style="margin-top:6px;align-self:flex-start" href="#graduates" data-act="stage-filter" data-s="${S.donut}">Open these graduates</a>`:''}</div>
+      </div>
+    </section>
+    <section class="card stack">
+      <h2>Placement funnel</h2>
+      <div class="funnel">${fr.map(([l,n],i)=>`<div class="frow"><span class="muted">${l}</span><div class="fbar"><i style="width:${Math.max(8,n/total*100)}%;background:${i===5?'var(--yellow)':'var(--accent)'};opacity:${i===5?1:1-i*.1};${i===5?'color:#00071A':''}">${n}</i></div><span class="drop num">${i?Math.round(n/fr[i-1][1]*100)+'% kept':''}</span></div>`).join('')}</div>
+    </section>
+  </div>
+
+  <div class="grid g2">
+    <section class="card stack">
+      <div class="between"><h2>Applications per week</h2><span class="chip blue num">+${Math.round((weeks[7]-weeks[0])/weeks[0]*100)}% in 8 weeks</span></div>
+      <div class="chartbox" id="trend">${trendChart(weeks)}<div class="tip" id="trendtip"></div></div>
+    </section>
+    <section class="card stack">
+      <div class="between"><h2>Weekly quota \u00B7 Job Guarantee</h2><span class="legend"><span><span class="sw" style="background:var(--accent)"></span>On track</span><span><span class="sw" style="background:var(--danger)"></span>Below 15</span></span></div>
+      <p class="faint">Qualified applications this week. The line marks the minimum of 15.</p>
+      <div class="quota num">${jg.map(g=>`<button class="namebtn" data-act="go" data-to="grad-${g.id}">${esc(g.name)}</button><div class="qtrack"><i style="width:${Math.min(100,g.apps/20*100)}%;background:${g.apps>=15?'var(--accent)':'var(--danger)'}"></i><b style="left:75%"></b></div><span style="text-align:right">${g.apps}/15</span>`).join('')}</div>
+    </section>
+  </div>
+
+  <div class="grid g2">
+    <section class="card stack">
+      <div class="between"><h2>This morning\u2019s sweep, filtered</h2><a class="btn ghost sm" href="#radar">Open Job Radar</a></div>
+      <p class="muted"><b class="num">${J.length}</b> jobs found, <b class="num">${pass}</b> pass the team\u2019s rules. Bar widths are proportional to job counts.</p>
+      <div class="flow" role="img" aria-label="${pass} passed, ${J.length-pass} filtered out"><i style="width:${pass/J.length*100}%;background:var(--accent)"></i>${Object.entries(reasonCounts).map(([r,n])=>`<i style="width:${n/J.length*100}%;background:${reasonColors[r]}"></i>`).join('')}</div>
+      <div class="legend"><span><span class="sw" style="background:var(--accent)"></span>Pass \u00B7 ${pass}</span>${Object.entries(reasonCounts).map(([r,n])=>`<span><span class="sw" style="background:${reasonColors[r]}"></span>${r} \u00B7 ${n}</span>`).join('')}</div>
+    </section>
+    <section class="card stack">
+      <div class="between"><h2>To do today</h2><span class="faint num">${todos.filter(t=>S.done[t.k]).length}/${Math.min(7,todos.length)} done</span></div>
+      ${todos.slice(0,7).map(t=>`<div class="todo ${S.done[t.k]?'done':''}"><span class="bul" style="background:${t.c}"></span><span class="t">${esc(t.t)}</span><button class="btn ghost sm" data-act="go" data-to="${t.go}">Open</button><button class="iconbtn sm" data-act="todo" data-k="${t.k}" aria-label="${S.done[t.k]?'Mark as not done':'Mark as done'}" style="${S.done[t.k]?'background:var(--accent);border-color:var(--accent)':''}">${S.done[t.k]?I.check:''}</button></div>`).join('')}
+    </section>
+  </div>`;
+}
+function trendChart(v){
+  const w=560,h=200,pl=34,pb=26,pt=12,mx=Math.ceil(Math.max(...v)/20)*20;
+  const sx=(w-pl-10)/(v.length-1),y=n=>pt+(h-pt-pb)*(1-n/mx);
+  const pts=v.map((n,i)=>[pl+i*sx,y(n)]);
+  const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const grid=[0,mx/2,mx].map(g=>`<line x1="${pl}" x2="${w-10}" y1="${y(g)}" y2="${y(g)}" stroke="var(--border)"/><text x="${pl-8}" y="${y(g)+4}" text-anchor="end" font-size="11" fill="var(--faint)">${g}</text>`).join('');
+  const labels=v.map((n,i)=>`<text x="${pts[i][0]}" y="${h-6}" text-anchor="middle" font-size="11" fill="var(--faint)">${i===v.length-1?'This wk':'W'+(i+1)}</text>`).join('');
+  return `<svg width="100%" viewBox="0 0 ${w} ${h}" role="img" aria-label="Applications per week, rising from ${v[0]} to ${v[v.length-1]}">${grid}<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".28"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs><path d="${d} L${pts[pts.length-1][0]} ${y(0)} L${pl} ${y(0)}Z" fill="url(#ga)"/><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>${pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===v.length-1?6:4}" fill="${i===v.length-1?'var(--accent)':'var(--surface)'}" stroke="var(--accent)" stroke-width="2.5" data-tip="${i===v.length-1?'This week':'Week '+(i+1)}: ${v[i]} applications" style="cursor:pointer"/>`).join('')}${labels}</svg>`;
+}
+
+function vGraduates(){
+  const f=S.gf;
+  const rows=G.filter(g=>(f.program==='All'||g.program===f.program)&&(f.stage==='All'||g.stage===f.stage)&&(f.plan==='All'||g.plan===f.plan)&&(!f.q||(g.name+' '+g.cohort).toLowerCase().includes(f.q.toLowerCase()))&&(!f.risk||(risk(g)&&risk(g).lvl==='red')));
+  const opt=(arr,sel)=>arr.map(([v,l])=>`<option value="${v}" ${v===sel?'selected':''}>${l}</option>`).join('');
+  return `
+  ${pageHead('Notion \u00B7 Student Tracker','Every graduate, <em class="hl">at a glance.</em>','A live mirror of the Student Tracker. Click a name to open their file.',`<button class="btn primary" data-act="launch">Launch GeekForce for a cohort</button>`)}
+  <div class="filters">
+    <label class="field" style="min-width:min(100%,240px)">Search<input id="gq" type="search" data-f="gf.q" value="${esc(f.q)}" placeholder="Name or cohort"></label>
+    <label class="field">Program<select id="gp" data-f="gf.program">${opt([['All','All programs'],...PROGRAMS.map(p=>[p,p])],f.program)}</select></label>
+    <label class="field">Stage<select id="gs" data-f="gf.stage">${opt([['All','All stages'],...STAGE_ORDER.map(s=>[s,STAGES[s].label])],f.stage)}</select></label>
+    <label class="field">Plan<select id="gpl" data-f="gf.plan">${opt([['All','All plans'],['JG','Job Guarantee'],['PS','Professional Support']],f.plan)}</select></label>
+    <label class="check" style="margin-bottom:6px"><input id="gr" type="checkbox" data-f="gf.risk" ${f.risk?'checked':''}>Needs attention only</label>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Graduate</th><th>Program</th><th>Stage</th><th>Plan</th><th>Last check-in</th><th>Applications \u00B7 week</th><th>Flag</th><th></th></tr></thead>
+    <tbody>${rows.map(g=>{const r=risk(g);const goal=PLANS[g.plan].apps;return `<tr>
+      <td><div class="namecell">${avatar(g)}<div><button class="namebtn" data-act="go" data-to="grad-${g.id}">${esc(g.name)}</button><div class="faint">${esc(g.loc)}</div></div></div></td>
+      <td><div class="row" style="gap:6px;flex-wrap:nowrap">${progDot(g.program)}${g.program}</div><div class="faint">${g.cohort}</div></td>
+      <td>${stageChip(g.stage)}</td>
+      <td><span class="chip line">${g.plan==='JG'?'Job Guarantee':'Prof. Support'}</span></td>
+      <td class="num" style="${g.last>=14&&g.stage!=='placed'?'color:var(--danger);font-weight:600':''}">${g.last===0?'Today':g.last+' days ago'}</td>
+      <td>${seeking(g)?`<div class="mini num"><div class="bar ${g.apps<goal?'r':''}"><i style="width:${Math.min(100,g.apps/goal*100)}%"></i></div>${g.apps}/${goal}</div>`:'<span class="faint">\u2014</span>'}</td>
+      <td>${r?`<span class="chip ${r.lvl}">${esc(r.t)}</span>`:'<span class="faint">\u2014</span>'}</td>
+      <td><button class="btn ghost sm" data-act="nudge" data-id="${g.id}" ${g.stage==='placed'?'disabled':''}>Nudge</button></td>
+    </tr>`}).join('')||`<tr><td colspan="8" class="muted">No graduates match these filters.</td></tr>`}</tbody>
+  </table></div>
+  <section class="panel stack">
+    <h3>Not Started ladder \u00B7 GeekFORCE Policies 2026</h3>
+    <div class="row"><span class="chip red">Day 7 \u00B7 follow up by Slack and email</span><span class="chip red">Day 15 \u00B7 automatic pause</span><span class="chip red">5 attempts in 15 days \u00B7 leaves the pipeline</span><span class="chip red">Day 30 \u00B7 loses Job Guarantee</span></div>
+  </section>`;
+}
+
+function vGrad(id){
+  const g=byId(id); if(!g) return `<p>Graduate not found. <a href="#graduates">Back to graduates</a></p>`;
+  const plan=PLANS[g.plan];const tr=S.tracker[g.id];const cols=['Saved','Applied','Interview','Offer'];
+  const sugg=jobsFor(g).filter(x=>!cols.some(c=>tr[c].some(k=>k.t===x.j.title&&k.c===x.j.company))).slice(0,4);
+  const r=risk(g);
+  const q=(l,v,max,warn)=>`<div class="stack" style="gap:8px"><div class="between"><span class="muted">${l}</span><b class="num">${v}/${max}</b></div><div class="bar ${warn?'r':''}"><i style="width:${Math.min(100,v/max*100)}%"></i></div></div>`;
+  return `
+  <a href="#graduates" style="font-weight:600;text-decoration:none">\u2190 All graduates</a>
+  <section class="panel" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+    ${avatar(g,'lg')}
+    <div class="stack" style="gap:6px;flex:1;min-width:220px">
+      <h1 style="font-size:clamp(28px,3.4vw,40px)">${esc(g.name)}</h1>
+      <div class="row">${progDot(g.program)}<span class="muted">${g.program} \u00B7 ${g.cohort} \u00B7 ${esc(g.loc)}</span></div>
+      <div class="row">${stageChip(g.stage)}<span class="chip line">${plan.label}</span>${r?`<span class="chip ${r.lvl}">${esc(r.t)}</span>`:''}</div>
+    </div>
+    <div class="row">
+      <label class="field">Stage<select id="stage-${g.id}" data-act-change="stage" data-id="${g.id}">${STAGE_ORDER.map(s=>`<option value="${s}" ${s===g.stage?'selected':''}>${STAGES[s].label}</option>`).join('')}</select></label>
+      <button class="btn primary" style="align-self:flex-end" data-act="compose" data-id="${g.id}" ${sugg.length?'':'disabled'}>Draft job message</button>
+    </div>
+  </section>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:start">
+    <aside class="stack" style="gap:20px">
+      <section class="card stack">
+        <h2>Profile</h2>
+        ${g.motto?`<p style="font-family:var(--font-display);font-style:italic;font-weight:700;font-size:18px;color:var(--accent-ink)">\u201C${esc(g.motto)}\u201D</p>`:''}
+        <dl class="kv"><dt>Work mode</dt><dd>${g.modes.join(', ')}</dd><dt>Targets</dt><dd>${esc(g.targets)}</dd><dt>Sets them apart</dt><dd>${esc(g.edge)}</dd></dl>
+        <div class="row">${g.skills.map(s=>`<span class="tag hit">${esc(s)}</span>`).join('')}</div>
+        <div class="row">${['Notion','Resume','LinkedIn','GitHub'].map(n=>`<button class="btn ghost sm" data-act="stub" data-msg="Opens ${n} once the Hub is connected.">${n}</button>`).join('')}</div>
+      </section>
+      <section class="card stack">
+        <h2>Quotas \u00B7 ${plan.label}</h2>
+        ${q('Applications this week',g.apps,plan.apps,g.apps<plan.apps)}
+        ${q('Networking contacts this month',g.contacts,plan.contacts,g.contacts<plan.contacts)}
+        ${q('Days since last check-in',g.last,14,g.last>=14)}
+      </section>
+    </aside>
+    <div class="stack" style="gap:20px;grid-column:span 2;min-width:0">
+      <section class="card stack">
+        <div class="between"><h2>Job Hunting Tracker</h2><span class="faint">Drag cards between columns, or use the arrows</span></div>
+        <div class="kanban">${cols.map((c,ci)=>`<div class="col" data-drop="${c}" data-id="${g.id}"><h4><span>${c}</span><span class="chip">${tr[c].length}</span></h4>
+          ${tr[c].map((k,ki)=>`<div class="kcard" draggable="true" data-drag="${c}|${ki}"><b style="font-size:14px">${esc(k.t)}</b><span class="faint">${esc(k.c)}</span>${k.auto?'<span class="chip blue" style="align-self:flex-start">From radar</span>':''}
+            <div class="acts"><button class="iconbtn sm" data-act="move" data-id="${g.id}" data-c="${c}" data-k="${ki}" data-dir="-1" ${ci===0?'disabled':''} aria-label="Move back">${I.left}</button><button class="iconbtn sm" data-act="move" data-id="${g.id}" data-c="${c}" data-k="${ki}" data-dir="1" ${ci===3?'disabled':''} aria-label="Move forward">${I.right}</button></div></div>`).join('')||'<span class="faint" style="padding:8px">Drop a card here</span>'}</div>`).join('')}</div>
+      </section>
+      <div class="grid g2">
+        <section class="card stack">
+          <h2>Matching jobs today</h2>
+          <p class="faint">US only \u00B7 Easy Apply \u00B7 last 24 hours \u00B7 under 50 applicants</p>
+          ${sugg.map(x=>`<div class="kcard" style="cursor:default;flex-direction:row;gap:12px;align-items:center">${ring(x.m,52,5)}<div style="min-width:0"><b>${esc(x.j.title)}</b><div class="faint">${esc(x.j.company)} \u00B7 ${x.j.mode} \u00B7 ${x.j.applicants} applicants \u00B7 ${x.j.hours}h ago</div></div></div>`).join('')||'<p class="muted">No new jobs pass the filters for this graduate today.</p>'}
+        </section>
+        <section class="card stack">
+          <h2>Check-in log</h2>
+          <form class="stack" data-form="log" data-id="${g.id}">
+            <div class="row" style="align-items:flex-end">
+              <label class="field" style="flex:1;min-width:140px">Type<select id="lt-${g.id}" name="type"><option>Check-in 1-1</option><option>Slack follow-up</option><option>Mock interview</option><option>Resume review</option></select></label>
+              <button class="btn primary" type="submit">Log it</button>
+            </div>
+            <label class="field">Note<textarea id="ln-${g.id}" name="note" placeholder="What did you agree on?"></textarea></label>
+          </form>
+          <div>${S.logs[g.id].map(l=>`<div class="log"><span class="b"></span><div><div>${esc(l.t)}</div><div class="faint">${esc(l.d)} \u00B7 ${esc(l.by)}</div></div></div>`).join('')}</div>
+        </section>
+      </div>
+    </div>
+  </div>`;
+}
+
+function vRadar(){
+  const f=S.rf;
+  let list=J.filter(j=>(f.program==='All'||j.program===f.program)&&(f.source==='all'||j.source===f.source)&&f.modes[j.mode]&&(!f.q||(j.title+' '+j.company+' '+j.skills.join(' ')).toLowerCase().includes(f.q.toLowerCase())));
+  let passing=list.filter(passes);const rejected=list.filter(j=>!passes(j));
+  const best=j=>(matchesFor(j)[0]||{m:0}).m;
+  if(f.view==='best'){passing=passing.filter(j=>best(j)>=80||j.partner).sort((a,b)=>(b.partner?5:0)+best(b)-b.applicants/10-((a.partner?5:0)+best(a)-a.applicants/10))}
+  else passing.sort((a,b)=>f.sort==='fresh'?a.hours-b.hours:f.sort==='few'?a.applicants-b.applicants:matchesFor(b).length-matchesFor(a).length);
+  const ns=nextSweep();
+  const srcCount=id=>J.filter(j=>(id==='all'||j.source===id)&&passes(j)).length;
+  const card=j=>{const ms=matchesFor(j);const open=S.openMatches[j.id];const sent=S.sent[j.id];const rr=rejectReasons(j);const src=SRCN(j.source);return `<article class="card job">
+    <span class="logo" style="background:${logoColor(j.company)}" aria-hidden="true">${ini(j.company)}</span>
+    <div class="stack" style="gap:8px;min-width:0">
+      <div class="row"><h3 style="font-size:18px">${esc(j.title)}</h3>${j.partner?'<span class="chip navy">Hiring partner</span>':''}${j.adjacent?'<span class="chip line">Adjacent role</span>':''}</div>
+      <div class="muted" style="font-size:14px">${esc(j.company)} \u00B7 ${j.mode} \u00B7 ${esc(j.loc)}</div>
+      <div class="row" style="gap:6px"><span class="chip" style="background:${src.color};color:#fff">${src.name}</span>${j.easy?'<span class="chip blue">Easy Apply</span>':'<span class="chip red">Applies off-site</span>'}<span class="chip line num">${j.hours}h ago</span><span class="chip line num">${j.applicants} applicants</span>${progDot(j.program)}</div>
+      <div class="row" style="gap:6px">${j.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
+      ${rr.length?`<div class="why">Filtered out: ${rr.join(', ')}</div>`:''}
+      ${open&&!rr.length?`<div class="matchlist">${ms.map(x=>`<div class="mrow"><span class="row" style="gap:8px">${avatar(x.g,'xs')}<button class="namebtn" data-act="go" data-to="grad-${x.g.id}">${esc(x.g.name)}</button><span class="faint">${x.g.cohort}</span></span><span class="row" style="gap:8px"><span class="chip blue num">${x.m}%</span><button class="btn ghost sm" data-act="compose" data-id="${x.g.id}" data-job="${j.id}">Draft message</button></span></div>`).join('')||'<span class="faint">No job-seeking graduate scores 70% or more.</span>'}</div>`:''}
+    </div>
+    ${rr.length?'':`<div class="stack" style="align-items:flex-end;gap:10px">
+      ${ms.length?ring(ms[0].m):''}
+      <div class="avstack">${ms.slice(0,4).map(x=>avatar(x.g,'xs')).join('')}</div>
+      <span class="faint num">${ms.length} graduate${ms.length===1?'':'s'} fit</span>
+      <div class="row" style="justify-content:flex-end"><button class="btn ghost sm" data-act="toggle-matches" data-job="${j.id}" aria-expanded="${!!open}">${open?'Hide':'Who fits'}</button>
+      <button class="btn primary sm" data-act="send-all" data-job="${j.id}" ${ms.length&&!sent?'':'disabled'}>${sent?'Drafted \u2713':'Draft for all'}</button></div>
+    </div>`}
+  </article>`};
+  return `
+  ${pageHead('Daily sweep \u00B7 last 24 hours','Job <em class="hl">Radar.</em>','Every morning the Hub searches each source with the title sets for each program, applies the team\u2019s rules and lists who fits each job.',`<div class="row"><button class="btn ghost" data-act="sweep-settings">Sweep settings</button><button class="btn primary" data-act="run-sweep">Run sweep now</button></div>`)}
+  <section class="panel" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+    <div class="row" style="gap:14px"><span class="logo" style="background:var(--accent)">${I.clockLg}</span><div><b>Runs daily at ${fmt12(S.sweep.time)} ET \u00B7 last ${S.sweep.window} hours</b><div class="faint">Last run: ${S.sweep.lastRun} \u00B7 next: ${ns.label} (in ${ns.in}) \u00B7 ${Object.values(S.sweep.on).filter(Boolean).length} sources on</div></div></div>
+    <div class="seg" role="group" aria-label="View">${[['all','All jobs'],['best','Best picks']].map(([v,l])=>`<button aria-pressed="${f.view===v}" data-act="rview" data-v="${v}">${l}</button>`).join('')}</div>
+  </section>
+  <div class="stack" style="gap:10px">
+    <span class="faint" style="font-weight:600">Source</span>
+    <div class="pills" role="group" aria-label="Source">${[{id:'all',name:'All sources'},...SOURCES.filter(s=>S.sweep.on[s.id])].map(s=>`<button class="pill" data-act="rsrc" data-s="${s.id}" aria-pressed="${f.source===s.id}">${s.id==='all'?'':`<span class="dotc" style="background:${s.color}"></span>`}${s.name}<span class="faint num">${srcCount(s.id)}</span></button>`).join('')}</div>
+    <span class="faint" style="font-weight:600;margin-top:4px">Program</span>
+    <div class="pills" role="group" aria-label="Program">${['All',...PROGRAMS].map(p=>`<button class="pill" data-act="rprog" data-p="${p}" aria-pressed="${f.program===p}">${p==='All'?'All programs':progDot(p)+p}</button>`).join('')}</div>
+  </div>
+  <div class="filters">
+    <label class="field" style="min-width:min(100%,260px)">Search<input id="rq" type="search" data-f="rf.q" value="${esc(f.q)}" placeholder="Title, company or skill"></label>
+    ${f.view==='all'?`<label class="field">Sort<select id="rs" data-f="rf.sort"><option value="fresh" ${f.sort==='fresh'?'selected':''}>Newest first</option><option value="few" ${f.sort==='few'?'selected':''}>Fewest applicants</option><option value="matches" ${f.sort==='matches'?'selected':''}>Most matches</option></select></label>`:''}
+    ${['Remote','Hybrid','On-site'].map(m=>`<label class="check" style="margin-bottom:6px"><input id="rm-${m}" type="checkbox" data-mode="${m}" ${f.modes[m]?'checked':''}>${m}</label>`).join('')}
+    <label class="check" style="margin-bottom:6px"><input id="rrej" type="checkbox" data-f="rf.showRejected" ${f.showRejected?'checked':''}>Show filtered-out jobs</label>
+  </div>
+  <p class="faint num">${passing.length} ${f.view==='best'?'best picks (80%+ match or hiring partner, fewest applicants first)':'jobs pass'} \u00B7 ${rejected.length} filtered out</p>
+  <div class="stack" style="gap:14px">${passing.map(card).join('')||'<div class="panel muted">No jobs pass with these filters. Try another source or program.</div>'}</div>
+  ${f.showRejected&&rejected.length?`<h2 style="margin-top:8px">Filtered out</h2><div class="stack" style="gap:14px;opacity:.8">${rejected.map(card).join('')}</div>`:''}`;
+}
+
+function vSources(){
+  const on=Object.values(S.sweep.on).filter(Boolean).length;
+  const meter=n=>`<span class="meter" title="Ease of connecting: ${['to confirm','hard','medium','easy'][n]}">${[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
+  return `
+  ${pageHead('Free job platforms \u00B7 North America','Where the sweep <em class="hl">looks.</em>','Turn sources on or off for the 10:00 AM sweep. Each card shows how simple it is for students to apply and how the Hub would connect to it.',`<span class="chip blue num">${on} of ${SOURCES.length} on</span>`)}
+  <div class="grid g3">${SOURCES.map(s=>{const isOn=!!S.sweep.on[s.id];const conn=S.srcConn[s.id];return `<article class="card src">
+    <div class="between"><div class="row" style="gap:12px"><span class="logo" style="background:${s.color}">${s.mono}</span><div><h3>${s.name}</h3><span class="faint">${s.easy}</span></div></div><button class="switch" role="switch" aria-checked="${isOn}" aria-label="Include ${esc(s.name)} in the daily sweep" data-act="src-toggle" data-id="${s.id}"><i></i></button></div>
+    <p class="muted">${esc(s.good)}</p>
+    <div class="between"><span class="faint">${esc(s.method)}</span>${meter(s.feas)}</div>
+    <div class="row"><button class="btn ${conn?'ghost':'primary'} sm" data-act="src-connect" data-id="${s.id}">${conn?'Connected (demo) \u2713':'Connect'}</button>${s.url?`<a class="btn ghost sm" href="${s.url}" target="_blank" rel="noopener">Visit ${I.ext}</a>`:''}</div>
+  </article>`}).join('')}</div>
+  <section class="panel stack" style="gap:16px">
+    <div class="stack" style="gap:6px"><span class="eyebrow">From the competition research</span><h2 style="font-size:24px">Employer channels other bootcamps use</h2><p class="muted">Ideas to add to the Hub after approval. Mark the ones the team wants on the roadmap.</p></div>
+    <div class="grid g2">${WEEKLY.tabs.find(t=>t.id==='bootcamps').items.map((i,k)=>`<article class="card stack"><div class="between"><span class="witem" style="padding:0;border:none;box-shadow:none;background:none"><span class="stat num" style="font-size:28px">${i.stat}</span></span><button class="btn ${S.roadmap[k]?'primary':'ghost'} sm" data-act="roadmap" data-k="${k}">${S.roadmap[k]?'On roadmap \u2713':'Add to roadmap'}</button></div><p>${esc(i.t)}</p><p class="faint"><b>For GeekForce:</b> ${esc(i.do)}</p><a class="faint" href="${i.url}" target="_blank" rel="noopener">${esc(i.src)} ${I.ext}</a></article>`).join('')}</div>
+  </section>`;
+}
+
+function vPipeline(){
+  const f=S.pf;
+  const people=G.filter(seeking).filter(g=>(f.program==='All'||g.program===f.program)&&(f.mode==='All'||g.modes.includes(f.mode))&&(!f.q||(g.skills.join(' ')+' '+g.name).toLowerCase().includes(f.q.toLowerCase())));
+  const job=jobById(f.job);
+  const best=G.filter(seeking).map(g=>({g,m:match(g,job)})).filter(x=>x.m>0).sort((a,b)=>b.m-a.m).slice(0,5);
+  return `
+  ${pageHead('Notion \u00B7 Talent Pipeline','Talent <em class="hl">Pipeline.</em>','Graduates who closed Stages 1 and 2. Send 3\u20135 strong profiles to each good job, the way Ironhack runs its Fast-track Interviews.','')}
+  <section class="panel stack">
+    <div class="between"><h2>Build a shortlist for a job</h2><button class="btn primary sm" data-act="copy-shortlist">Copy shortlist</button></div>
+    <label class="field" style="max-width:520px">Job<select id="pj" data-f="pf.job">${J.filter(passes).map(j=>`<option value="${j.id}" ${j.id===f.job?'selected':''}>${esc(j.title)} \u00B7 ${esc(j.company)}</option>`).join('')}</select></label>
+    <div class="grid g3" style="gap:10px">${best.map((x,i)=>`<div class="card" style="padding:14px;display:flex;gap:12px;align-items:center"><span class="faint num" style="font-weight:700">#${i+1}</span>${avatar(x.g)}<div style="min-width:0;flex:1"><b>${esc(x.g.name)}</b><div class="faint">${esc(x.g.loc)}</div></div>${ring(x.m,48,5)}</div>`).join('')||'<p class="muted">No profiles in this program yet.</p>'}</div>
+  </section>
+  <div class="filters">
+    <label class="field">Program<select id="pp" data-f="pf.program">${['All',...PROGRAMS].map(p=>`<option value="${p}" ${p===f.program?'selected':''}>${p==='All'?'All programs':p}</option>`).join('')}</select></label>
+    <label class="field">Work mode<select id="pm" data-f="pf.mode">${['All','Remote','Hybrid','On-site'].map(p=>`<option ${p===f.mode?'selected':''}>${p}</option>`).join('')}</select></label>
+    <label class="field">Skill<input id="pq" type="search" data-f="pf.q" value="${esc(f.q)}" placeholder="e.g. RAG, SQL, Splunk"></label>
+  </div>
+  <div class="grid g3">${people.map(g=>`<article class="card stack" style="border-top:4px solid ${pc(g.program)}">
+    <div class="row">${avatar(g)}<div style="min-width:0"><h3>${esc(g.name)}</h3><div class="faint">${g.program} \u00B7 Entry level \u00B7 ${esc(g.loc)}</div></div></div>
+    <p style="font-family:var(--font-display);font-style:italic;font-weight:700;color:var(--accent-ink)">\u201C${esc(g.motto)}\u201D</p>
+    <div class="row">${g.skills.slice(0,3).map(s=>`<span class="tag hit">${esc(s)}</span>`).join('')}</div>
+    <dl class="kv"><dt>Work mode</dt><dd>${g.modes.join(', ')}</dd><dt>Stage</dt><dd>${STAGES[g.stage].label}</dd></dl>
+    <div class="row"><button class="btn ghost sm" data-act="profile" data-id="${g.id}">View profile</button><button class="btn primary sm" data-act="propose" data-id="${g.id}">Propose to a company</button></div>
+  </article>`).join('')||'<p class="muted">No profiles match these filters.</p>'}</div>`;
+}
+
+function vAutomations(){
+  const on=Object.values(S.autosOn).filter(Boolean).length;
+  return `
+  ${pageHead('Runs on its own','Job-search <em class="hl">automations.</em>','Scheduled once a day or once a week, so they don\u2019t waste servers or tokens. Messages to graduates are always drafts that a coach approves.',`<span class="chip blue num">${on} of ${AUTOS.length} on</span>`)}
+  <div class="grid g2">${AUTOS.map(a=>{const isOn=S.autosOn[a.id];return `<article class="card stack">
+    <div class="between" style="align-items:flex-start"><h3 style="font-size:18px;flex:1">${a.name}</h3><button class="switch" role="switch" aria-checked="${isOn}" aria-label="${esc(a.name)}" data-act="auto-toggle" data-id="${a.id}"><i></i></button></div>
+    <p class="muted">${a.desc}</p>
+    <div class="row"><span class="chip blue">${I.clock} ${a.when}</span><span class="chip line">\u2192 ${a.out}</span></div>
+    <div><button class="btn ghost sm" data-act="auto-run" data-id="${a.id}" ${isOn?'':'disabled'}>Run now</button></div>
+  </article>`}).join('')}</div>
+  <section class="card stack"><h2>Activity</h2>${S.autoLog.length?S.autoLog.map(l=>`<div class="log"><span class="b"></span><div><b>${esc(l.n)}</b> <span class="faint">${l.t}</span><div class="muted">${esc(l.r)}</div></div></div>`).join(''):'<p class="muted">Nothing has run in this session. Press \u201CRun now\u201D on any automation.</p>'}</section>`;
+}
+
+function vIntegrations(){
+  return `
+  ${pageHead('Built on what GeekForce already uses','Plugged into <em class="hl">your tools.</em>','Notion stays the source of truth. The Hub reads the current databases, filters Lali\u2019s feed instead of replacing it, and only writes drafts in Slack. Phase 1 is read-only.','')}
+  <div class="grid g3">${INTEGRATIONS.map(i=>{const st=S.integ[i.id];return `<article class="card stack">
+    <div class="between"><h3>${i.name}</h3><span class="chip ${st?'ok':'line'}">${st?'Demo test passed':'Not connected'}</span></div>
+    <p class="muted">${i.use}</p>
+    <div class="between"><span class="chip blue">${i.phase}</span><button class="btn ghost sm" data-act="integ" data-id="${i.id}">Configure</button></div>
+  </article>`}).join('')}</div>
+  <section class="panel stack">
+    <h2>Rollout after approval</h2>
+    <ol class="steps">
+      <li><div><b>Read-only.</b> Connect Notion, Lali\u2019s sheet and Slack with read access. Dashboards and the Job Radar use real data; nothing is written.</div></li>
+      <li><div><b>Drafts.</b> The Hub writes Slack drafts and Notion suggestions that a coach approves one by one.</div></li>
+      <li><div><b>Automations on.</b> The team turns on each automation separately once it trusts the results.</div></li>
+    </ol>
+  </section>`;
+}
+
+/* ================= router ================= */
+function route(){
+  const h=(location.hash||'#home').slice(1);
+  let html;
+  if(h.startsWith('grad-')) html=vGrad(h.slice(5));
+  else html=({home:vHome,graduates:vGraduates,radar:vRadar,sources:vSources,pipeline:vPipeline,automations:vAutomations,integrations:vIntegrations}[h]||vHome)();
+  const navKey=h.startsWith('grad-')?'graduates':h;
+  document.querySelectorAll('nav.main a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+navKey?'page':'false'));
+  const act=document.activeElement;const aid=act&&act.id;const pos=act&&act.selectionStart;
+  $('#app').innerHTML=html;
+  if(aid){const el=document.getElementById(aid);if(el){el.focus({preventScroll:true});try{if(pos!=null)el.setSelectionRange(pos,pos)}catch(e){}}}
+  bindChart();
+}
+function bindChart(){
+  const box=$('#trend');if(!box)return;const tip=$('#trendtip');
+  box.querySelectorAll('[data-tip]').forEach(c=>{
+    c.addEventListener('mouseenter',()=>{const r=c.getBoundingClientRect(),b=box.getBoundingClientRect();tip.textContent=c.dataset.tip;tip.style.left=(r.left-b.left+r.width/2)+'px';tip.style.top=(r.top-b.top)+'px';tip.classList.add('on')});
+    c.addEventListener('mouseleave',()=>tip.classList.remove('on'));
+  });
+}
+let lastHash=location.hash;
+window.addEventListener('hashchange',()=>{route();if(location.hash!==lastHash){window.scrollTo(0,0);lastHash=location.hash;const w=$('#app');w.style.animation='none';void w.offsetWidth;w.style.animation=''}});
+
+/* ================= flows ================= */
+function compose(gid,preJob){
+  const g=byId(gid);const opts=jobsFor(g).slice(0,6);
+  if(!opts.length){toast('No matching jobs for '+g.name+' today.');return}
+  let picked=preJob?[preJob]:opts.slice(0,2).map(x=>x.j.id);
+  const build=()=>{const js=picked.map(jobById);
+    const lines=js.map((j,i)=>`${i+1}. ${j.title} \u2013 ${j.company} (${j.mode}, ${j.loc}): it asks for ${j.skills.filter(s=>g.skills.includes(s)).join(', ')||j.skills[0]}, which you already have.\nlinkedin.com/jobs/view/[JOB ID]`).join('\n\n');
+    return `Hi ${first(g.name)}!\n\nI found ${js.length} Easy Apply role${js.length===1?'':'s'} posted in the last 24 hours that fit your profile:\n\n${lines}\n\nApply today: early applications get far more interviews. Log them in your Job Hunting Tracker so they count toward your weekly goal.`};
+  const render=()=>openModal('Message to '+esc(g.name),`<p class="muted">Pick up to 2 jobs. Team rule: Easy Apply only, and never more than 2 links in one message.</p>
+    <div class="stack" style="gap:6px">${opts.map(x=>`<label class="check"><input type="checkbox" id="cj-${x.j.id}" data-cj="${x.j.id}" ${picked.includes(x.j.id)?'checked':''} ${!picked.includes(x.j.id)&&picked.length>=2?'disabled':''}>${esc(x.j.title)} \u00B7 ${esc(x.j.company)} <span class="chip blue num">${x.m}%</span></label>`).join('')}</div>
+    <div class="between"><span class="eyebrow">Slack DM draft</span><span class="chip ok num">Links: ${picked.length}/2</span></div>
+    <pre id="draft">${esc(build())}</pre>`,[
+    {label:'Copy text',fn:()=>{const t=build();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Copied to clipboard')).catch(()=>{const r=document.createRange();r.selectNodeContents($('#draft'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Text selected. Press \u2318C or Ctrl+C to copy.')})}},
+    {label:'Mark as sent',kind:'primary',fn:()=>{picked.forEach(id=>{const j=jobById(id);S.tracker[g.id].Saved.push({t:j.title,c:j.company,auto:true})});S.logs[g.id].unshift({d:'Today',t:'Sent '+picked.length+' Easy Apply job(s) by Slack',by:'You \u00B7 Career Hub'});closeModal();route();toast('Logged for '+g.name,SIM)}}]);
+  render();
+  $('#modal-root').onchange=e=>{const id=e.target.dataset.cj;if(!id)return;picked=e.target.checked?[...picked,id].slice(0,2):picked.filter(x=>x!==id);if(!picked.length)picked=[opts[0].j.id];render()};
+}
+function sweepSettings(){
+  let prog=PROGRAMS[0];
+  const body=()=>`<div class="row"><label class="field">Run every day at<select id="sw-time">${['07:00','08:00','09:00','10:00','11:00'].map(t=>`<option value="${t}" ${t===S.sweep.time?'selected':''}>${fmt12(t)} ET</option>`).join('')}</select></label>
+    <label class="field">Look back<select id="sw-win">${[['24','Last 24 hours'],['48','Last 48 hours'],['72','Last 3 days']].map(([v,l])=>`<option value="${v}" ${v===S.sweep.window?'selected':''}>${l}</option>`).join('')}</select></label></div>
+    <span class="eyebrow">Job titles to search</span>
+    <div class="pills">${PROGRAMS.map(p=>`<button class="pill" data-sw-prog="${p}" aria-pressed="${p===prog}">${progDot(p)}${p}</button>`).join('')}</div>
+    <div class="titlecloud">${[...S.sweep.titles[prog].fresh,...S.sweep.titles[prog].base].map(t=>`<button data-sw-del="${esc(t)}" aria-label="Remove ${esc(t)}">${esc(t)} \u2715</button>`).join('')}</div>
+    <div class="row" style="align-items:flex-end"><label class="field" style="flex:1">Add a title<input id="sw-new" placeholder="e.g. Customer Engineer"></label><button class="btn ghost" data-sw-add="1">Add</button></div>
+    <p class="faint">Sources are chosen on the Job Sources page. Running once a day keeps server and AI costs low.</p>`;
+  const render=()=>{openModal('Daily sweep settings',body(),[{label:'Cancel'},{label:'Save schedule',kind:'primary',fn:()=>{S.sweep.time=$('#sw-time').value;S.sweep.window=$('#sw-win').value;closeModal();route();toast('Sweep scheduled daily at '+fmt12(S.sweep.time)+' ET','Last '+S.sweep.window+' hours. '+SIM)}}]);
+    $('#modal-root .modal').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+      if(b.dataset.swProg){const t=$('#sw-time').value,w=$('#sw-win').value;prog=b.dataset.swProg;render();$('#sw-time').value=t;$('#sw-win').value=w}
+      else if(b.dataset.swDel){const set=S.sweep.titles[prog];set.fresh=set.fresh.filter(x=>x!==b.dataset.swDel);set.base=set.base.filter(x=>x!==b.dataset.swDel);render()}
+      else if(b.dataset.swAdd){const v=$('#sw-new').value.trim();if(v){S.sweep.titles[prog].base.push(v);render();toast('Added \u201C'+v+'\u201D to '+prog)}}
+    })};
+  render();
+}
+function palette(){
+  const items=[...G.map(g=>({l:g.name,s:g.program+' \u00B7 '+STAGES[g.stage].label,go:'grad-'+g.id,av:g})),...J.filter(passes).map(j=>({l:j.title+' \u00B7 '+j.company,s:'Job \u00B7 '+SRCN(j.source).name,go:'radar'})),...[['Overview','home'],['Graduates','graduates'],['Job Radar','radar'],['Job Sources','sources'],['Talent Pipeline','pipeline'],['Automations','automations'],['Integrations','integrations']].map(([l,go])=>({l,s:'Page',go}))];
+  let sel=0;lastFocus=document.activeElement;
+  $('#modal-root').innerHTML=`<div class="modal-bg" data-act="modal-bg"><div class="modal palette" role="dialog" aria-modal="true" aria-label="Search"><input id="pal" placeholder="Search graduates, jobs or pages\u2026" autocomplete="off"><ul id="pal-list"></ul></div></div>`;
+  const list=()=>{const q=$('#pal').value.toLowerCase();const res=items.filter(i=>(i.l+' '+i.s).toLowerCase().includes(q)).slice(0,9);sel=Math.min(sel,Math.max(0,res.length-1));
+    $('#pal-list').innerHTML=res.map((i,k)=>`<li><button class="${k===sel?'on':''}" data-act="pal-go" data-go="${i.go}">${i.av?avatar(i.av,'xs'):'<span class="dotc" style="background:var(--accent)"></span>'}${esc(i.l)}<small>${esc(i.s)}</small></button></li>`).join('')||'<li class="faint" style="padding:12px">No results</li>';return res};
+  let res=list();const inp=$('#pal');inp.focus();
+  inp.addEventListener('input',()=>{sel=0;res=list()});
+  inp.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){sel=Math.min(sel+1,res.length-1);res=list();e.preventDefault()}else if(e.key==='ArrowUp'){sel=Math.max(sel-1,0);res=list();e.preventDefault()}else if(e.key==='Enter'&&res[sel]){closeModal();location.hash=res[sel].go}});
+}
+function titleInfo(title){
+  const d=TITLE_INFO[title];
+  if(!d){toast(title,'No details yet for this title.');return}
+  const q=encodeURIComponent(title.replace(/ \(.*\)/,''));
+  const li=`https://www.linkedin.com/jobs/search/?keywords=${q}&location=United%20States&geoId=103644278&f_TPR=r86400&f_E=1%2C2&f_AL=true&sortBy=DD`;
+  const set=S.sweep.titles[d.p];const inSweep=[...set.fresh,...set.base].includes(title);
+  openModal(esc(title),`<div class="row"><span class="chip" style="background:${pc(d.p)};color:#fff">${d.p}</span>${d.pay?`<span class="chip blue">${esc(d.pay)}</span>`:''}</div>
+    <div class="tinfo stack" style="gap:14px">
+      <div><h4>What the job is</h4><p>${esc(d.why)}</p></div>
+      <div><h4>Why our graduates qualify</h4><ul>${d.tools.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="faint" style="margin-top:6px">From the <a href="${PROG_URL[d.p]}" target="_blank" rel="noopener">${d.p} program page</a>.</p></div>
+      <div><h4>Why search it, not only \u201CAI Engineer\u201D</h4><p>${esc(d.beyond)}</p></div>
+      ${d.payUrl?`<p class="faint">Pay: <a href="${d.payUrl}" target="_blank" rel="noopener">${d.payUrl.includes('ziprecruiter')?ZR:'4Geeks program page'}</a></p>`:''}
+    </div>
+    <a class="btn ghost" href="${li}" target="_blank" rel="noopener">Search on LinkedIn: US, last 24 h, Easy Apply ${I.ext}</a>`,
+    [{label:inSweep?'Already in the daily sweep':'Add to daily sweep',kind:inSweep?'ghost':'primary',fn:()=>{if(!inSweep)set.base.push(title);closeModal();toast(inSweep?title+' is already in the sweep':'\u201C'+title+'\u201D added to the '+d.p+' sweep','Runs daily at '+fmt12(S.sweep.time)+' ET. '+SIM)}}]);
+}
+function moveCard(gid,from,ki,to){
+  const g=byId(gid);if(from===to)return;const card=S.tracker[g.id][from].splice(ki,1)[0];if(!card)return;S.tracker[g.id][to].push(card);
+  if(to==='Interview'){S.logs[g.id].unshift({d:'Today',t:'Interview kit drafted for '+card.c,by:'Automatic \u00B7 Interview kit'});toast('Moved to Interview','Interview kit drafted for '+card.c+'. '+SIM)}
+  else if(to==='Offer'){confetti();S.logs[g.id].unshift({d:'Today',t:'Offer from '+card.c,by:'You \u00B7 Job Hunting Tracker'});toast('An offer for '+first(g.name)+'!','Check it is a qualified offer: 15+ hours a week or 10+ weeks.')}
+  else toast('Moved to '+to);
+  route();
+}
+
+/* ================= events ================= */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-act]');if(!t)return;
+  const a=t.dataset.act;
+  if(a==='modal-bg'&&e.target!==t)return;
+  switch(a){
+    case 'modal-bg':case 'modal-close':closeModal();break;
+    case 'modal-action':{const ac=modalActions[+t.dataset.i];if(ac&&ac.fn)ac.fn();else closeModal();break}
+    case 'go':location.hash=t.dataset.to;break;
+    case 'pal-go':closeModal();location.hash=t.dataset.go;break;
+    case 'palette':palette();break;
+    case 'theme':{const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';break}
+    case 'hide-notice':S.noticeHidden=true;route();toast('Note hidden','The \u201CMockup\u201D label stays in the top bar.');break;
+    case 'risk-filter':S.gf.risk=true;S.gf.stage='All';break;
+    case 'stage-filter':S.gf.stage=t.dataset.s;S.gf.risk=false;break;
+    case 'donut':S.donut=S.donut===t.dataset.s?null:t.dataset.s;route();break;
+    case 'wtab':S.wtab=t.dataset.t;route();break;
+    case 'title-info':titleInfo(t.dataset.t);break;
+    case 'todo':S.done[t.dataset.k]=!S.done[t.dataset.k];route();break;
+    case 'nudge':{const g=byId(t.dataset.id);S.logs[g.id].unshift({d:'Today',t:'Slack reminder sent',by:'You \u00B7 Career Hub'});toast('Reminder to '+g.name+' logged',SIM);break}
+    case 'launch':openModal('Launch GeekForce for a cohort',`<label class="field">Cohort<select id="lc"><option>ft-ai-2 \u00B7 AI Engineering</option><option>ds-13 \u00B7 Data Science & ML</option><option>pt-fs-35 \u00B7 Full Stack</option></select></label>
+      <label class="check"><input id="lc1" type="checkbox" checked>Launch email in ActiveCampaign</label><label class="check"><input id="lc2" type="checkbox" checked>Slack message with the survey and Calendly link</label><label class="check"><input id="lc3" type="checkbox" checked>Drive folder and checklist for each student</label>
+      <p class="faint">In the real tool, a coach reviews each draft before anything goes out.</p>`,[{label:'Cancel'},{label:'Launch',kind:'primary',fn:()=>{const c=$('#lc').value;closeModal();toast('GeekForce launched for '+c,SIM)}}]);break;
+    case 'move':{const cols=['Saved','Applied','Interview','Offer'];const c=t.dataset.c;moveCard(t.dataset.id,c,+t.dataset.k,cols[cols.indexOf(c)+ +t.dataset.dir]);break}
+    case 'compose':compose(t.dataset.id,t.dataset.job);break;
+    case 'stub':toast(t.dataset.msg,'Not connected in the mockup.');break;
+    case 'rprog':S.rf.program=t.dataset.p;route();break;
+    case 'rsrc':S.rf.source=t.dataset.s;route();break;
+    case 'rview':S.rf.view=t.dataset.v;route();break;
+    case 'sweep-settings':e.preventDefault();sweepSettings();break;
+    case 'run-sweep':{S.sweep.lastRun='Today, '+now();route();toast('Sweep finished',J.length+' jobs found, '+J.filter(passes).length+' passed. Sample data.');break}
+    case 'toggle-matches':S.openMatches[t.dataset.job]=!S.openMatches[t.dataset.job];route();break;
+    case 'send-all':{const j=jobById(t.dataset.job);const ms=matchesFor(j);ms.forEach(x=>{S.tracker[x.g.id].Saved.push({t:j.title,c:j.company,auto:true});S.logs[x.g.id].unshift({d:'Today',t:'Sent '+j.title+' at '+j.company,by:'You \u00B7 Job Radar'})});S.sent[j.id]=ms.length;route();toast('Drafted for '+ms.length+' graduate(s)','Added to their trackers as Saved. '+SIM);break}
+    case 'src-toggle':{const id=t.dataset.id;S.sweep.on[id]=!S.sweep.on[id];if(!S.sweep.on[id]&&S.rf.source===id)S.rf.source='all';route();toast(SRCN(id).name+(S.sweep.on[id]?' added to':' removed from')+' the daily sweep');break}
+    case 'src-connect':{const s=SRCN(t.dataset.id);openModal('Connect '+esc(s.name),`<div class="row"><span class="logo" style="background:${s.color}">${s.mono}</span><div><b>${esc(s.method)}</b><div class="faint">How students apply: ${esc(s.easy)}</div></div></div><p class="muted">${esc(s.note)}</p>
+      ${s.id==='linkedin'?`<ol class="steps"><li><div>Save one LinkedIn search per program with <b>Past 24 hours</b>, <b>United States</b> and <b>Easy Apply</b>, and turn on daily alerts.</div></li><li><div>The Hub reads those alert emails at ${fmt12(S.sweep.time)} ET.</div></li><li><div>For a deeper look, it can open the search in your own logged-in Chrome and read the results with you watching.</div></li></ol>`:''}
+      <p class="faint">Mockup: nothing is connected. This shows how the connection would work after approval.</p>`,[{label:'Close'},{label:s.feas?'Connect in demo mode':'Send link to check',kind:'primary',fn:()=>{S.srcConn[s.id]=true;closeModal();route();toast(s.name+' connected in demo mode','Sample data only.')}}]);break}
+    case 'roadmap':S.roadmap[t.dataset.k]=!S.roadmap[t.dataset.k];route();break;
+    case 'profile':{const g=byId(t.dataset.id);openModal(esc(g.name),`<div class="row">${avatar(g,'lg')}<div><p style="font-family:var(--font-display);font-style:italic;font-weight:700;color:var(--accent-ink)">\u201C${esc(g.motto)}\u201D</p><span class="faint">${g.program} \u00B7 ${g.cohort}</span></div></div><dl class="kv"><dt>Level</dt><dd>Entry</dd><dt>Location</dt><dd>${esc(g.loc)}</dd><dt>Work mode</dt><dd>${g.modes.join(', ')}</dd><dt>Targets</dt><dd>${esc(g.targets)}</dd><dt>Background</dt><dd>${esc(g.edge)}</dd></dl><div class="row">${g.skills.map(s=>`<span class="tag hit">${esc(s)}</span>`).join('')}</div>`,[{label:'Open full file',kind:'primary',fn:()=>{closeModal();location.hash='grad-'+g.id}}]);break}
+    case 'propose':{const g=byId(t.dataset.id);openModal('Propose '+esc(g.name),`<label class="field">Company<select id="pc">${PARTNERS.map(p=>`<option>${p}</option>`).join('')}</select></label><label class="field">Note for the company<textarea id="pn">${esc(first(g.name))} closed GeekForce Stages 1 and 2 and fits roles like ${esc(g.targets)}.</textarea></label>`,[{label:'Cancel'},{label:'Save proposal',kind:'primary',fn:()=>{const c=$('#pc').value;S.logs[g.id].unshift({d:'Today',t:'Proposed to '+c,by:'You \u00B7 Talent Pipeline'});closeModal();toast(g.name+' proposed to '+c,SIM)}}]);break}
+    case 'copy-shortlist':{const j=jobById(S.pf.job);const best=G.filter(seeking).map(g=>({g,m:match(g,j)})).filter(x=>x.m>0).sort((a,b)=>b.m-a.m).slice(0,5);const txt=`Shortlist for ${j.title} at ${j.company}:\n`+best.map(x=>`- ${x.g.name} (${x.g.program}, ${x.g.loc}) \u00B7 ${x.m}% match \u00B7 ${x.g.skills.slice(0,3).join(', ')}`).join('\n');(navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('Shortlist copied')).catch(()=>openModal('Shortlist',`<pre>${esc(txt)}</pre>`,[{label:'Close'}]));break}
+    case 'auto-toggle':S.autosOn[t.dataset.id]=!S.autosOn[t.dataset.id];route();toast(AUTOS.find(x=>x.id===t.dataset.id).name+(S.autosOn[t.dataset.id]?' turned on':' turned off'));break;
+    case 'auto-run':{const id=t.dataset.id;const a=AUTOS.find(x=>x.id===id);const sk=G.filter(seeking);const r={
+      a0:`${J.length} jobs found across ${Object.values(S.sweep.on).filter(Boolean).length} sources in the last ${S.sweep.window} hours.`,
+      a9:'This week\u2019s issue is ready at the top of the Overview.',
+      a1:`${J.filter(passes).length} passed, ${J.length-J.filter(passes).length} filtered out.`,
+      a2:`${J.filter(passes).reduce((n,j)=>n+matchesFor(j).length,0)} graduate\u2013job matches at 70% or more.`,
+      a3:`${sk.filter(g=>jobsFor(g).length).length} Slack drafts ready for review (max 2 links each).`,
+      a4:`${G.filter(g=>g.stage==='not_started'&&g.last>=7).length} graduates flagged in the Not Started ladder.`,
+      a5:`${sk.filter(g=>g.last>=14).length} graduates in Stage 3 without a check-in for 14+ days.`,
+      a6:`${sk.filter(g=>g.apps<PLANS[g.plan].apps).length} graduates below their weekly application goal.`,
+      a7:`${G.filter(g=>g.stage==='interviewing').length} interview kits drafted.`,
+      a8:`${J.filter(j=>j.partner&&passes(j)).length} partner jobs with a 3\u20135 profile shortlist.`}[id];
+      S.autoLog.unshift({t:now(),n:a.name,r});route();toast(a.name+' ran',r);break}
+    case 'integ':{const i=INTEGRATIONS.find(x=>x.id===t.dataset.id);openModal(esc(i.name),`<p class="muted">${i.use}</p><p><b>Access:</b> ${i.phase}.</p><p class="faint">To connect it for real, an admin of the GeekForce workspace creates an access key with read permissions. In the mockup you can only run a demo test.</p>`,[{label:'Close'},{label:'Run demo test',kind:'primary',fn:()=>{S.integ[i.id]=true;closeModal();route();toast(i.name+': demo test passed','Sample data only.')}}]);break}
+  }
+});
+document.addEventListener('input',e=>{
+  const k=e.target.dataset.f;if(!k||e.target.type==='checkbox'||e.target.tagName==='SELECT')return;
+  const [o,p]=k.split('.');S[o][p]=e.target.value;route();
+});
+document.addEventListener('change',e=>{
+  const el=e.target;if(el.closest('#modal-root'))return;
+  if(el.dataset.mode){S.rf.modes[el.dataset.mode]=el.checked;route();return}
+  if(el.dataset.actChange==='stage'){const g=byId(el.dataset.id);g.stage=el.value;S.logs[g.id].unshift({d:'Today',t:'Stage changed to '+STAGES[g.stage].label,by:'You \u00B7 Career Hub'});if(g.stage==='placed')confetti();route();toast(g.stage==='placed'?first(g.name)+' is placed!':'Stage updated','In the real tool this updates Notion after confirmation.');return}
+  const k=el.dataset.f;if(!k)return;const [o,p]=k.split('.');
+  S[o][p]=el.type==='checkbox'?el.checked:el.value;route();
+});
+document.addEventListener('submit',e=>{
+  const f=e.target.closest('[data-form="log"]');if(!f)return;e.preventDefault();
+  const g=byId(f.dataset.id);const note=f.note.value.trim();
+  S.logs[g.id].unshift({d:'Today',t:f.type.value+(note?': '+note:''),by:'You \u00B7 Career Hub'});g.last=0;route();toast('Check-in logged for '+g.name,'In the real tool this goes to the Student Profile in Notion.');
+});
+let drag=null;
+document.addEventListener('dragstart',e=>{const k=e.target.closest&&e.target.closest('[data-drag]');if(!k)return;const [c,i]=k.dataset.drag.split('|');drag={c,i:+i};k.classList.add('dragging');e.dataTransfer.effectAllowed='move';try{e.dataTransfer.setData('text/plain',k.dataset.drag)}catch(_){}});
+document.addEventListener('dragend',e=>{document.querySelectorAll('.dragging,.over').forEach(x=>x.classList.remove('dragging','over'))});
+document.addEventListener('dragover',e=>{const c=e.target.closest&&e.target.closest('[data-drop]');if(!c||!drag)return;e.preventDefault();document.querySelectorAll('.over').forEach(x=>x!==c&&x.classList.remove('over'));c.classList.add('over')});
+document.addEventListener('drop',e=>{const c=e.target.closest&&e.target.closest('[data-drop]');if(!c||!drag)return;e.preventDefault();const d=drag;drag=null;moveCard(c.dataset.id,d.c,d.i,c.dataset.drop)});
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palette();return}
+  if(e.key==='Escape'&&$('#modal-root').innerHTML)closeModal();
+});
+route();
+})();
+</script>
+
+</body>
+</html>
