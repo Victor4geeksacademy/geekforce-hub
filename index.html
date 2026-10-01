@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="GeekForce Hub: internal career-support workspace for the 4Geeks Academy GeekForce USA team.">
+<meta name="description" content="GeekForce Hub: career-support workspace for the 4Geeks Academy GeekForce USA team.">
 <link rel="icon" href="img/4geeks-icon.png">
 <style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
 <title>GeekForce Career Hub</title>
@@ -63,6 +63,8 @@ nav.main::-webkit-scrollbar{display:none}
 nav.main a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:9px 12px;border-radius:8px;white-space:nowrap;transition:background .15s,color .15s}
 nav.main a:hover{color:var(--fg);background:var(--surface-2)}
 nav.main a[aria-current="page"]{color:var(--accent-ink);background:var(--accent-soft)}
+.navsep{width:1px;align-self:center;height:22px;background:var(--border-strong);margin:0 6px;flex-shrink:0}
+nav.main a.setup{text-transform:none;letter-spacing:0;font-weight:500;color:var(--faint)}
 .tools{display:flex;gap:8px;align-items:center;flex-shrink:0}
 .mockpill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);border:1px dashed var(--border-strong);border-radius:999px;padding:4px 10px;white-space:nowrap}
 .mockpill i{width:6px;height:6px;border-radius:999px;background:var(--yellow)}
@@ -288,12 +290,13 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
     <a class="brand" href="#home"><img src="img/4geeks-icon.png" alt=""><span><b>4Geeks</b><small>GeekForce Hub</small></span></a>
     <nav class="main" aria-label="Main">
       <a href="#home">Overview</a>
-      <a href="#graduates">Graduates</a>
       <a href="#radar">Job Radar</a>
-      <a href="#sources">Job Sources</a>
+      <a href="#graduates">Graduates</a>
       <a href="#pipeline">Talent Pipeline</a>
       <a href="#automations">Automations</a>
-      <a href="#integrations">Integrations</a>
+      <span class="navsep" aria-hidden="true"></span>
+      <a href="#sources" class="setup">Job Sources</a>
+      <a href="#integrations" class="setup">Integrations</a>
     </nav>
     <div class="tools">
       <span class="mockpill" title="Sample data. Nothing is connected or sent."><i></i><span>Mockup</span></span>
@@ -990,7 +993,7 @@ function sweepSettings(){
   render();
 }
 function palette(){
-  const items=[...G.map(g=>({l:g.name,s:g.program+' \u00B7 '+STAGES[g.stage].label,go:'grad-'+g.id,av:g})),...J.filter(passes).map(j=>({l:j.title+' \u00B7 '+j.company,s:'Job \u00B7 '+SRCN(j.source).name,go:'radar'})),...[['Overview','home'],['Graduates','graduates'],['Job Radar','radar'],['Job Sources','sources'],['Talent Pipeline','pipeline'],['Automations','automations'],['Integrations','integrations']].map(([l,go])=>({l,s:'Page',go}))];
+  const items=[...G.map(g=>({l:g.name,s:g.program+' \u00B7 '+STAGES[g.stage].label,go:'grad-'+g.id,av:g})),...J.filter(passes).map(j=>({l:j.title+' \u00B7 '+j.company,s:'Job \u00B7 '+SRCN(j.source).name,go:'radar'})),...[['Overview','home'],['Job Radar','radar'],['Graduates','graduates'],['Talent Pipeline','pipeline'],['Automations','automations'],['Job Sources','sources'],['Integrations','integrations']].map(([l,go])=>({l,s:'Page',go}))];
   let sel=0;lastFocus=document.activeElement;
   $('#modal-root').innerHTML=`<div class="modal-bg" data-act="modal-bg"><div class="modal palette" role="dialog" aria-modal="true" aria-label="Search"><input id="pal" placeholder="Search graduates, jobs or pages\u2026" autocomplete="off"><ul id="pal-list"></ul></div></div>`;
   const list=()=>{const q=$('#pal').value.toLowerCase();const res=items.filter(i=>(i.l+' '+i.s).toLowerCase().includes(q)).slice(0,9);sel=Math.min(sel,Math.max(0,res.length-1));
